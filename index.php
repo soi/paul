@@ -236,7 +236,8 @@
     error_reporting(E_ALL);
     ini_set('display_errorss', 1);
 
-    require('smarty_connect.php');
+    require('smarty_connect_linux.php');
+    //require('smarty_connect.php');
     require('display_functions.php');
     require('complete_functions.php');
     require('mysql.connection.class.php');
@@ -250,7 +251,6 @@
     $smarty->debugging_ctrl = ($_SERVER['SERVER_NAME'] == 'localhost') ? 'URL' : 'NONE';
     
     $registered = display_visitor_data();       
-    
     //display the news by default
     if (!isset($_GET['site'])){
         assign_news($smarty);
