@@ -238,7 +238,6 @@
 
     require('constants.php');
     require(CLASS_PATH.SMARTY_CON_PATH);
-    //require('smarty_connect.php');
     require('display_functions.php');
     require('complete_functions.php');
     require(CLASS_PATH.'class.mysql.connection.php');
@@ -471,7 +470,7 @@
         }
         else
             display_errors(250);   // permission denied
-    }                           
+    }  
     
     //assigning page parts that are always visible
     $smarty->assign('head', $smarty->fetch("head.tpl"));

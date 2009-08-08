@@ -121,7 +121,7 @@
 
         global $smarty;
 
-        $error_messages = parse_ini_file('languages\en\errors.ini');   // @todo what if file not exists
+        $error_messages = parse_ini_file(ERROR_PATH);   // @todo what if file not exists
         $related_error_messages = array_values(array_intersect_key($error_messages, array_flip($errors)));  // @todo memcache that
         $smarty->assign('error_messages', $related_error_messages);
         return true;
@@ -522,7 +522,7 @@
 
         global $smarty;
 
-        $success_messages = parse_ini_file('languages\en\success.ini', true); // @todo what if file not exists
+        $success_messages = parse_ini_file(SUCCESS_PATH, true); // @todo what if file not exists
         $related_success_messages = $success_messages[$success_action];  // @todo memcache that
         // array that is to be assigned
         $success = array();
