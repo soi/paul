@@ -236,11 +236,12 @@
     error_reporting(E_ALL);
     ini_set('display_errorss', 1);
 
-    require('smarty_connect_linux.php');
+    require('constants.php');
+    require(CLASS_PATH.SMARTY_CON_PATH);
     //require('smarty_connect.php');
     require('display_functions.php');
     require('complete_functions.php');
-    require('mysql.connection.class.php');
+    require(CLASS_PATH.'class.mysql.connection.php');
     
     //main db connection
     $db = new mysql_connection('localhost', 'paul_usr', 'YsvQz8SfV9', 'paul');
