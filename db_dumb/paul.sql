@@ -235,7 +235,7 @@ CREATE TABLE `logging` (
   `method` char(6) NOT NULL,
   `message` varchar(255) NOT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,7 +244,7 @@ CREATE TABLE `logging` (
 
 LOCK TABLES `logging` WRITE;
 /*!40000 ALTER TABLE `logging` DISABLE KEYS */;
-INSERT INTO `logging` VALUES (1,'2009-08-02 15:03:17','sd','sf'),(2,'2009-08-02 15:06:02','INSERT','game with namelog_testex has been created'),(3,'2009-08-02 15:20:01','INSERT','game with nametoc has been inserted'),(4,'2009-08-02 15:22:53','INSERT','Game with name log_test_1 (id: 20) has been inserted.'),(5,'2009-08-02 15:23:53','INSERT','Game with name \'log_test_2\' (id: 22) has been inserted.'),(6,'2009-08-02 15:29:53','INSERT','Game with name sudoku (id: 23) has been inserted.'),(7,'2009-08-02 15:40:29','INSERT','New Guid riper (with id: 13) has been inserted.'),(8,'2009-08-02 15:46:50','INSERT','New Guid \'riper2\' (with id: 15) has been inserted.'),(9,'2009-08-02 22:20:37','INSERT','New League \'liga1with game_id \'1\' (with id: 8) has been inserted.'),(10,'2009-08-02 22:26:34','INSERT','New League \'liga2\'with Game ID \'2\' (with id: 9) has been inserted.'),(11,'2009-08-02 22:27:24','INSERT','New League \'liga3\' with Game ID \'3\' (with id: 10) has been inserted.'),(12,'2009-08-02 22:29:24','INSERT','Map with name \'Blister\' (id: 5) has been inserted.'),(13,'2009-08-02 22:32:20','INSERT','Game with name \'tetris\' (with id: 24) has been inserted.'),(14,'2009-08-02 22:33:21','INSERT','Map with name \'map1\' (with id: 6) has been inserted.'),(15,'2009-08-08 15:15:48','INSERT','Game with name \'testgame\' (with id: 28) has been inserted.'),(16,'2009-08-08 15:16:05','INSERT','Game with name \'testgame2\' (with id: 30) has been inserted.'),(17,'2009-08-08 15:36:09','INSERT','Team with name \'team222\' (with id: 158) has been inserted.'),(18,'2009-08-08 15:47:50','INSERT','New League \'Liga22\' (with id: 11) with Game ID \'2\' has been inserted.'),(19,'2009-08-08 15:57:20','INSERT','Team with team_id \'1\' (with id: 345) with div_id \'1\' has been inserted.'),(20,'2009-08-08 15:57:36','INSERT','Team with team_id \'1\' (with id: 346) with div_id \'2\' has been inserted.'),(21,'2009-08-08 15:58:11','INSERT','Team with team_id \'2\' (with id: 349) with div_id \'2\' has been inserted.'),(22,'2009-08-08 15:58:41','INSERT','Team with team_id \'1\' (with id: 350) with div_id \'1\' has been inserted.'),(23,'2009-08-08 16:06:29','INSERT','Team with team_id \'1\' (with id: 353) with div_id \'1\' has been inserted into table \"team_in_division\".'),(24,'2009-08-08 16:18:05','INSERT','New User \'last1\' (with id: 15) with last name \'last1\' with first name \'first1\' has been inserted.'),(25,'2009-08-08 16:28:08','INSERT','New guid_id \'2\' (with id: 9) for User ID \'2\' has been inserted.'),(26,'2009-08-08 16:32:32','INSERT','New GUID ID \'2\' (with id: 10) for User ID \'2\' has been inserted.'),(27,'2009-08-08 18:59:52','UPDATE','Game \'gamename1\' (with Game ID: 1) has been updated.'),(28,'2009-08-08 19:02:46','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(29,'2009-08-08 19:03:52','UPDATE','Game \'gamename1\' with Game ID: \'1\' has been updated.'),(30,'2009-08-08 19:05:14','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(31,'2009-08-08 19:20:59','DELETE','All signed up teams have been deleted from the League with ID \'1\'.'),(32,'2009-08-08 19:24:42','UPDATE','Guid \'bla\' (with Guid ID: \'1\') has been updated.'),(33,'2009-08-08 19:26:43','UPDATE','Guid \'bla\' (with ID: \'1\') has been updated.'),(34,'2009-08-08 19:31:20','UPDATE','League \'bla\' (with ID: \'1\') has been updated.'),(35,'2009-08-08 19:55:42','UPDATE','Match Settlement (with ID: \'1\') has been updated.'),(36,'2009-08-08 20:02:12','UPDATE','User Profile for user with ID: \'1\') has been updated.'),(37,'2009-08-08 20:22:45','SELECT','Admin information about user with ID: \'1\') has been selected.'),(38,'2009-08-08 20:45:27','SELECT','Information about division from league with ID: \'1\') has been selected.'),(39,'2009-08-08 22:17:10','INSERT','Match (id: 1377) of division with id \'1 and matchday 1 has been inserted.'),(40,'2009-08-08 22:17:28','INSERT','Match (id: 1378) of division with id \'1 and matchday 1 has been inserted.'),(41,'2009-08-08 22:18:06','INSERT','Match (id: 1379) of division with id \'1 and matchday 1 has been inserted.'),(42,'2009-08-08 22:18:06','INSERT','Match settlement (id: 2) of match with id \'1379 has been inserted.');
+INSERT INTO `logging` VALUES (1,'2009-08-02 15:03:17','sd','sf'),(2,'2009-08-02 15:06:02','INSERT','game with namelog_testex has been created'),(3,'2009-08-02 15:20:01','INSERT','game with nametoc has been inserted'),(4,'2009-08-02 15:22:53','INSERT','Game with name log_test_1 (id: 20) has been inserted.'),(5,'2009-08-02 15:23:53','INSERT','Game with name \'log_test_2\' (id: 22) has been inserted.'),(6,'2009-08-02 15:29:53','INSERT','Game with name sudoku (id: 23) has been inserted.'),(7,'2009-08-02 15:40:29','INSERT','New Guid riper (with id: 13) has been inserted.'),(8,'2009-08-02 15:46:50','INSERT','New Guid \'riper2\' (with id: 15) has been inserted.'),(9,'2009-08-02 22:20:37','INSERT','New League \'liga1with game_id \'1\' (with id: 8) has been inserted.'),(10,'2009-08-02 22:26:34','INSERT','New League \'liga2\'with Game ID \'2\' (with id: 9) has been inserted.'),(11,'2009-08-02 22:27:24','INSERT','New League \'liga3\' with Game ID \'3\' (with id: 10) has been inserted.'),(12,'2009-08-02 22:29:24','INSERT','Map with name \'Blister\' (id: 5) has been inserted.'),(13,'2009-08-02 22:32:20','INSERT','Game with name \'tetris\' (with id: 24) has been inserted.'),(14,'2009-08-02 22:33:21','INSERT','Map with name \'map1\' (with id: 6) has been inserted.'),(15,'2009-08-08 15:15:48','INSERT','Game with name \'testgame\' (with id: 28) has been inserted.'),(16,'2009-08-08 15:16:05','INSERT','Game with name \'testgame2\' (with id: 30) has been inserted.'),(17,'2009-08-08 15:36:09','INSERT','Team with name \'team222\' (with id: 158) has been inserted.'),(18,'2009-08-08 15:47:50','INSERT','New League \'Liga22\' (with id: 11) with Game ID \'2\' has been inserted.'),(19,'2009-08-08 15:57:20','INSERT','Team with team_id \'1\' (with id: 345) with div_id \'1\' has been inserted.'),(20,'2009-08-08 15:57:36','INSERT','Team with team_id \'1\' (with id: 346) with div_id \'2\' has been inserted.'),(21,'2009-08-08 15:58:11','INSERT','Team with team_id \'2\' (with id: 349) with div_id \'2\' has been inserted.'),(22,'2009-08-08 15:58:41','INSERT','Team with team_id \'1\' (with id: 350) with div_id \'1\' has been inserted.'),(23,'2009-08-08 16:06:29','INSERT','Team with team_id \'1\' (with id: 353) with div_id \'1\' has been inserted into table \"team_in_division\".'),(24,'2009-08-08 16:18:05','INSERT','New User \'last1\' (with id: 15) with last name \'last1\' with first name \'first1\' has been inserted.'),(25,'2009-08-08 16:28:08','INSERT','New guid_id \'2\' (with id: 9) for User ID \'2\' has been inserted.'),(26,'2009-08-08 16:32:32','INSERT','New GUID ID \'2\' (with id: 10) for User ID \'2\' has been inserted.'),(27,'2009-08-08 18:59:52','UPDATE','Game \'gamename1\' (with Game ID: 1) has been updated.'),(28,'2009-08-08 19:02:46','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(29,'2009-08-08 19:03:52','UPDATE','Game \'gamename1\' with Game ID: \'1\' has been updated.'),(30,'2009-08-08 19:05:14','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(31,'2009-08-08 19:20:59','DELETE','All signed up teams have been deleted from the League with ID \'1\'.'),(32,'2009-08-08 19:24:42','UPDATE','Guid \'bla\' (with Guid ID: \'1\') has been updated.'),(33,'2009-08-08 19:26:43','UPDATE','Guid \'bla\' (with ID: \'1\') has been updated.'),(34,'2009-08-08 19:31:20','UPDATE','League \'bla\' (with ID: \'1\') has been updated.'),(35,'2009-08-08 19:55:42','UPDATE','Match Settlement (with ID: \'1\') has been updated.'),(36,'2009-08-08 20:02:12','UPDATE','User Profile for user with ID: \'1\') has been updated.'),(37,'2009-08-08 20:22:45','SELECT','Admin information about user with ID: \'1\') has been selected.'),(38,'2009-08-08 20:45:27','SELECT','Information about division from league with ID: \'1\') has been selected.'),(39,'2009-08-08 22:17:10','INSERT','Match (id: 1377) of division with id \'1 and matchday 1 has been inserted.'),(40,'2009-08-08 22:17:28','INSERT','Match (id: 1378) of division with id \'1 and matchday 1 has been inserted.'),(41,'2009-08-08 22:18:06','INSERT','Match (id: 1379) of division with id \'1 and matchday 1 has been inserted.'),(42,'2009-08-08 22:18:06','INSERT','Match settlement (id: 2) of match with id \'1379 has been inserted.'),(43,'2009-08-09 00:43:28','SELECT','Admin information about user with ID: \'12\') has been selected.'),(44,'2009-08-09 01:30:26','SELECT','Admin information about user with ID: \'14\') has been selected.'),(45,'2009-08-09 02:44:10','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(46,'2009-08-09 02:44:43','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(47,'2009-08-09 02:45:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(48,'2009-08-09 02:50:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(49,'2009-08-09 02:51:19','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(50,'2009-08-09 02:51:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(51,'2009-08-09 02:53:02','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(52,'2009-08-09 02:54:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(53,'2009-08-09 02:57:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(54,'2009-08-09 02:57:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(55,'2009-08-09 03:05:39','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(56,'2009-08-09 03:05:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(57,'2009-08-09 03:06:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(58,'2009-08-09 03:07:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(59,'2009-08-09 03:13:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(60,'2009-08-09 03:13:52','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(61,'2009-08-09 03:14:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(62,'2009-08-09 03:18:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(63,'2009-08-09 03:19:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(64,'2009-08-09 03:20:15','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(65,'2009-08-09 03:21:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(66,'2009-08-09 03:21:51','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(67,'2009-08-09 03:22:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(68,'2009-08-09 03:22:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(69,'2009-08-09 03:23:06','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(70,'2009-08-09 03:23:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(71,'2009-08-09 03:23:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(72,'2009-08-09 03:24:24','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(73,'2009-08-09 03:25:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(74,'2009-08-09 03:25:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(75,'2009-08-09 03:30:43','SELECT','Admin information about user with ID: \'12\') has been selected.'),(76,'2009-08-09 03:31:17','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(77,'2009-08-09 03:31:38','SELECT','Admin information about user with ID: \'2\') has been selected.'),(78,'2009-08-09 03:32:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(79,'2009-08-09 03:33:41','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(80,'2009-08-09 03:33:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.');
 /*!40000 ALTER TABLE `logging` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -432,7 +432,7 @@ CREATE TABLE `match_settlement` (
 
 LOCK TABLES `match_settlement` WRITE;
 /*!40000 ALTER TABLE `match_settlement` DISABLE KEYS */;
-INSERT INTO `match_settlement` VALUES (2,'1990-12-30',0,0,1379,0,0,10),(3,'2000-12-30',0,0,4,0,0,10);
+INSERT INTO `match_settlement` VALUES (2,'1990-12-30',0,0,1379,0,0,10),(3,'2006-12-31',3,3,4,0,0,5);
 /*!40000 ALTER TABLE `match_settlement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -449,9 +449,9 @@ CREATE TABLE `match_settlement_log` (
   `m_id` int(10) unsigned NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`msl_id`),
-  UNIQUE KEY `UNIQUE_1` (`m_id`),
-  CONSTRAINT `FK_match_settlement_log_2` FOREIGN KEY (`m_id`) REFERENCES `match` (`m_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `FK_INDEX` (`m_id`) USING BTREE,
+  CONSTRAINT `FK_match_settlement_log_1` FOREIGN KEY (`m_id`) REFERENCES `match` (`m_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -460,6 +460,7 @@ CREATE TABLE `match_settlement_log` (
 
 LOCK TABLES `match_settlement_log` WRITE;
 /*!40000 ALTER TABLE `match_settlement_log` DISABLE KEYS */;
+INSERT INTO `match_settlement_log` VALUES (1,'bibo from Hoorai changed the date to 2000-12-30 20:30',4,'2009-08-09 02:44:44'),(6,'bibo from Hoorai changed the date to 2006-12-30 18:00',4,'2009-08-09 02:57:44'),(7,'bibo from Hoorai changed the map to 4.',4,'2009-08-09 03:07:05'),(8,'bibo from Hoorai changed the map to de_dust2.',4,'2009-08-09 03:13:13'),(9,'bibo from Hoorai changed the map to de_prodigy.',4,'2009-08-09 03:14:13'),(10,'bibo from Hoorai changed the map to de_dust2.',4,'2009-08-09 03:18:23'),(11,'bibo from Hoorai changed the map to de_prodigy.',4,'2009-08-09 03:19:14'),(12,'bibo from Hoorai said: swsergb.',4,'2009-08-09 03:23:50'),(13,'bibo from Hoorai said:   swsergb.',4,'2009-08-09 03:24:24'),(14,'bibo from Hoorai said: \'swsergb.\'',4,'2009-08-09 03:25:24'),(15,'bibo from Hoorai said: \'swsergb\'.',4,'2009-08-09 03:25:50'),(16,'hero from TEAM Alternate changed the map to de_prodigy.',4,'2009-08-09 03:31:18'),(17,'hero from TEAM Alternate said: hiho.',4,'2009-08-09 03:31:18'),(18,'soi from Admin staff said: HI IHR ATZEN.',4,'2009-08-09 03:32:05'),(19,'soi from Admin staff changed the map to de_prodigy.',4,'2009-08-09 03:33:41'),(20,'soi from Admin staff changed the map to de_prodigy.',4,'2009-08-09 03:33:42'),(21,'soi from Admin staff said: HI IHR ATZEN.',4,'2009-08-09 03:33:42'),(22,'soi from Admin staff changed the date to 2006-12-31 18:00.',4,'2009-08-09 03:33:54'),(23,'soi from Admin staff changed the map to de_dust2.',4,'2009-08-09 03:33:54'),(24,'soi from Admin staff changed the map to de_dust2.',4,'2009-08-09 03:33:54'),(25,'soi from Admin staff said: assies.',4,'2009-08-09 03:33:54');
 /*!40000 ALTER TABLE `match_settlement_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -692,7 +693,7 @@ CREATE TABLE `user_in_team` (
   CONSTRAINT `user_in_team_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `user_in_team_ibfk_2` FOREIGN KEY (`t_id`) REFERENCES `team` (`t_id`),
   CONSTRAINT `user_in_team_ibfk_3` FOREIGN KEY (`tst_id`) REFERENCES `team_status_type` (`tst_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -701,7 +702,7 @@ CREATE TABLE `user_in_team` (
 
 LOCK TABLES `user_in_team` WRITE;
 /*!40000 ALTER TABLE `user_in_team` DISABLE KEYS */;
-INSERT INTO `user_in_team` VALUES (2,3,1,0,0,4),(3,4,1,1,1,3),(4,5,2,0,0,3),(7,5,1,0,0,4),(8,4,2,0,0,4),(9,3,2,0,1,4),(24,11,1,1,1,4),(25,12,1,0,1,5),(33,12,2,0,0,4),(36,2,38,1,1,4),(37,2,39,1,1,4),(38,3,39,0,0,4),(39,4,40,1,1,4),(40,2,41,1,1,4),(44,2,1,1,1,2),(45,14,42,1,1,4),(47,12,19,1,1,1);
+INSERT INTO `user_in_team` VALUES (2,3,1,0,0,4),(3,4,1,1,1,3),(4,5,2,0,0,3),(7,5,1,0,0,4),(8,4,2,0,0,4),(9,3,2,0,1,4),(24,11,1,1,1,4),(25,12,1,0,1,5),(33,12,2,0,0,4),(36,2,38,1,1,4),(37,2,39,1,1,4),(38,3,39,0,0,4),(39,4,40,1,1,4),(40,2,41,1,1,4),(44,2,1,1,1,2),(45,14,42,1,1,4),(47,12,19,1,1,1),(50,14,20,1,1,1);
 /*!40000 ALTER TABLE `user_in_team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -944,6 +945,28 @@ BEGIN
 
 
 
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `add_settlement_log` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `add_settlement_log`(IN match_id INTEGER UNSIGNED, IN log_message char(255))
+BEGIN
+  INSERT INTO match_settlement_log (message, m_id, `date`) VALUES (
+  log_message,
+  match_id,
+  NOW());
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1800,6 +1823,27 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_map_name` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_map_name`(IN passed_map_id INTEGER UNSIGNED)
+BEGIN
+  SELECT name
+  FROM map
+  WHERE map_id = passed_map_id;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `get_match_info` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1912,7 +1956,7 @@ DELIMITER ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_match_settlement_log`(IN match_id INTEGER UNSIGNED)
 BEGIN
-  SELECT u_id as user_id, message, m_id as match_id, `date`
+  SELECT message, m_id as match_id, `date`
   FROM match_settlement_log
   WHERE m_id = match_id;
 END */;;
@@ -1934,27 +1978,6 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_match_teams`(IN match_id INTEGER UNSIGNED)
 BEGIN
   SELECT t_id_1 as team_id_1, t_id_2 as team_id_2
-  FROM `match`
-  WHERE m_id = match_id;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_match_teams_with_date` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_match_teams_with_date`(IN match_id INTEGER UNSIGNED)
-BEGIN
-  SELECT t_id_1 as team_id_1, t_id_2 as team_id_2, `date`, time_id
   FROM `match`
   WHERE m_id = match_id;
 END */;;
@@ -2314,6 +2337,27 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_team_name` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_team_name`(IN team_id INTEGER UNSIGNED)
+BEGIN
+  SELECT name
+  FROM team
+  WHERE t_id = team_id;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `get_team_perm` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2478,6 +2522,27 @@ BEGIN
          login
 	FROM user
 	WHERE u_id = user_id;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_user_nick` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_user_nick`(IN user_id INTEGER UNSIGNED)
+BEGIN
+  SELECT nick
+  FROM `user`
+  WHERE u_id = user_id;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2670,4 +2735,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2009-08-08 23:14:47
+-- Dump completed on 2009-08-09  5:19:18
