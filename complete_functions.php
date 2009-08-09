@@ -171,10 +171,7 @@
             global $smarty;
             global $db; 
             
-            $day = '((0[1-9])|([1-2][0-9])|(30|31))';
-            $month = '((0[1-9])|(1[0-2]))';
-            $date = '/^\d{4}-'.$month.'-'.$day.'$/';
-            if (!preg_match($date, $_POST['start'])) {
+            if (!preg_match(DATE_REGEX, $_POST['start'])) {
                 display_errors(554);
                 return true;
             }
@@ -478,11 +475,151 @@
         }    
         return true;
      }
+     
+     /**
+     * Checks a edit_match_settlement request for invalid inputs and performs all
+     * actions if no (permission) error occurs
+     *
+     * @access public
+     * @return true
+     */
+     
+     function complete_edit_match_settlement() {
+        if (valid_request(array(isset($_GET['match_id']),
+                                isset($_POST['date']),
+                                isset($_POST['time_id']),
+                                isset($_POST['map_id_1']),
+                                isset($_POST['map_id_2']),
+                                isset($_POST['chat'])))) {
+                                
+            global $smarty;
+            global $db; 
+            
+            if (strlen($_POST['chat']) > 100) {
+                display_errors(650);
+                return true;
+            }                    
+            if (!preg_match(DATE_REGEX, $_POST['date'])) {
+                display_errors(554);
+                return true;
+            } 
+            
+            //checking for which map the user has rights; only setting this map
+            $sql = "get_match_teams(".$_GET['match_id'].")";
+            $db->run($sql);
+            if ($db->empty_result) {
+                display_errors(1);
+                return true;
+            }            
+            $match_teams = $db->get_result_row();
+            
+            //getting current settlement state
+            $sql = "get_match_settlement_info(".$_GET['match_id'].")";
+            $db->run($sql);
+            if ($db->empty_result) {
+                display_errors(1);
+                return true;
+            }
+            $match_settlement_info = $db->get_result_row();
+            
+            $sql = "edit_match_settlement(".$_GET['match_id'].", ";
+            
+            //the right team id is in the $_GET array due to the permission checks
+            if ($_SESSION['admin'] || $_SESSION['head_admin']) {
+                $sql .= $_POST['map_id_1'].", ".$_POST['map_id_2'].", ";    
+            } else {
+                if ($_GET['team_id'] == $match_teams['team_id_1']) {
+                    $sql .= $_POST['map_id_1'].", ".$match_settlement_info['map_id_2'].", ";
+                }
+                elseif ($_GET['team_id'] == $match_teams['team_id_2']) {
+                    $sql .= $match_settlement_info['map_id_1'].", ".$_POST['map_id_2'].", ";
+                }
+                else {
+                    display_errors(1);
+                    return true;
+                }    
+            }                        
+            $sql.= "'".$_POST['date']."', ".$_POST['time_id'].")";
+            $db->run($sql);
+            if ($db->error_result) 
+                display_errors(1);
+            else {                
+                // logging the actions
+                
+                // the users name
+                $sql = "get_user_nick(".$_SESSION['user_id'].")";
+                $db->run($sql);
+                $result = $db->get_result_row();
+                $user_nick = $result['nick'];
+                
+                //the name of the related team
+                if ($_SESSION['admin'] || $_SESSION['head_admin']) { 
+                    $team_name = "Admin staff";
+                } 
+                else {
+                    $sql = "get_team_name(".$_GET['team_id'].")";
+                    $db->run($sql);
+                    $result = $db->get_result_row();
+                    $team_name = $result['name'];    
+                }
+                
+                if (($_POST['date'] != $match_settlement_info['date']) || ($_POST['time_id'] != $match_settlement_info['time_id'])) {
+                    $arr = array( 1 => '16:00',
+                                  2 => '16:30',
+                                  3 => '17:00',
+                                  4 => '17:30',
+                                  5 => '18:00',
+                                  6 => '18:30',
+                                  7 => '19:00',
+                                  8 => '19:30',
+                                  9 => '20:00',
+                                  10 => '20:30',
+                                  11 => '21:00',
+                                  12 => '21:30',
+                                  13 => '22:00',
+                                  14 => '22:30',
+                                  15 => '23:00',
+                                  16 => '23:30',
+                                  17 => '0:00',
+                                  18 => '0:30');
+                    $sql = "add_settlement_log(".$_GET['match_id'].", '".$user_nick." from ".$team_name." changed the date to ".$_POST['date']." ".$arr[$_POST['time_id']].".')";
+                    $db->run($sql);
+                }
+                
+                // maps changed?                
+                if (($_SESSION['admin'] || $_SESSION['head_admin']) || (($_GET['team_id'] == $match_teams['team_id_1']) && ($_POST['map_id_1'] != $match_settlement_info['map_id_1']))) {
+                    $sql = "get_map_name(".$_POST['map_id_1'].")";
+                    $db->run($sql);
+                    $map_name = $db->get_result_row();
+                    $sql = "add_settlement_log(".$_GET['match_id'].", '".$user_nick." from ".$team_name." changed the map to ".$map_name['name'].".')";
+                    $db->run($sql);    
+                }
+                if (($_SESSION['admin'] || $_SESSION['head_admin']) || (($_GET['team_id'] == $match_teams['team_id_2']) && ($_POST['map_id_2'] != $match_settlement_info['map_id_2']))) {
+                    $sql = "get_map_name(".$_POST['map_id_2'].")";
+                    $db->run($sql);
+                    $map_name = $db->get_result_row();
+                    $sql = "add_settlement_log(".$_GET['match_id'].", '".$user_nick." from ".$team_name." changed the map to ".$map_name['name'].".')";
+                    $db->run($sql);
+                }
+                
+                // chat added?                
+                if (strlen($_POST['chat']) > 0) { 
+                    $sql = "add_settlement_log(".$_GET['match_id'].", '".$user_nick." from ".$team_name." said: ".$_POST['chat'].".')";
+                    $db->run($sql);    
+                }
+                
+                display_success("edit_match_settlement", $_GET['match_id']);
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));
+            }
+                                
+        }
+                                    
+     }
     
     
     /**
      * Checks a edit_team request for invalid inputs and performs all
-     * SQL actions if no error occurs
+     * actions if no error occurs
      *
      * @access public
      * @return true

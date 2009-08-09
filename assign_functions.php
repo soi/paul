@@ -407,15 +407,16 @@
         global $smarty;
         global $db;
 
-        $sql = "get_match_settlement_info(".$match_id.")";
+        $sql = "get_match_settlement_info(".$match_id.");";
         $db->run($sql);
         $match_settlement_info = $db->get_result_row();
+        
         // adding the related team_id of the user
         // is still in the $_GET array after the permission check
         if (!$_SESSION['admin'] && !$_SESSION['head_admin'])
             $match_settlement_info['user_team_id'] = $_GET['team_id'];
         
-        $smarty->assign('match_settlement', $match_settlement_info);
+        $smarty->assign('match_settlement_info', $match_settlement_info);
         return true;
     }
     

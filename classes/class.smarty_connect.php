@@ -12,8 +12,8 @@ class smarty_connect extends Smarty
 
 		$this->Smarty();
 
-		$this->template_dir = 'D:\Programme\xampp\htdocs\openleaguecms\templates';
-        $this->config_dir = 'D:\Programme\xampp\htdocs\openleaguecms\smarty\config';
+		$this->template_dir = 'D:\Programme\xampp\htdocs\paul\templates';
+        $this->config_dir = 'D:\Programme\xampp\htdocs\paul\smarty\config';
         $this->cache_dir = 'D:\Programmieren\PHP\Classes\smarty\cache';
         $this->compile_dir = 'D:\Programmieren\PHP\Classes\smarty\templates_c';
 

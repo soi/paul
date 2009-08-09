@@ -64,8 +64,6 @@ class mysql_connection {
     function get_result_row() {
         if ($this->error_result)
             die ('mysql.connection.error: previous call of \''.$this->last_proc.'\' returned an error, cannot fetch');
-        if ($this->empty_result)
-            return false;
         return $this->result->fetch_assoc();       
     }
 }

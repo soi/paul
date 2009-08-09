@@ -243,7 +243,7 @@
     require(CLASS_PATH.'class.mysql.connection.php');
     
     //main db connection
-    $db = new mysql_connection('localhost', 'paul_usr', 'YsvQz8SfV9', 'paul');
+    $db = new mysql_connection('ripersoi.dyndns.org', 'paul_usr', 'YsvQz8SfV9', 'paul');
     //$db_connection = connect_to_db('localhost', 'paul_dbo', 'BN6uMqvPyv', 'paul');
     
     //main smarty instance        
