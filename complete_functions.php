@@ -486,8 +486,11 @@
      
      function complete_edit_match_settlement() {
         if (valid_request(array(isset($_GET['match_id']),
-                                isset($_POST['date']),
-                                isset($_POST['time_id']),
+                                isset($_POST['day']),
+                                isset($_POST['month']),
+                                isset($_POST['year']),
+                                isset($_POST['hour']),
+                                isset($_POST['minute']),
                                 isset($_POST['map_id_1']),
                                 isset($_POST['map_id_2']),
                                 isset($_POST['chat'])))) {
@@ -499,10 +502,14 @@
                 display_errors(650);
                 return true;
             }                    
-            if (!preg_match(DATE_REGEX, $_POST['date'])) {
+            /*if (!preg_match(DATE_REGEX, $_POST['date'])) {
                 display_errors(554);
                 return true;
             } 
+            if (!preg_match(TIME_REGEX, $_POST['time'])) {
+                display_errors(651);
+                return true;
+            }       */
             
             //checking for which map the user has rights; only setting this map
             $sql = "get_match_teams(".$_GET['match_id'].")";
@@ -527,7 +534,8 @@
             //the right team id is in the $_GET array due to the permission checks
             if ($_SESSION['admin'] || $_SESSION['head_admin']) {
                 $sql .= $_POST['map_id_1'].", ".$_POST['map_id_2'].", ";    
-            } else {
+            } 
+            else {
                 if ($_GET['team_id'] == $match_teams['team_id_1']) {
                     $sql .= $_POST['map_id_1'].", ".$match_settlement_info['map_id_2'].", ";
                 }
@@ -538,8 +546,9 @@
                     display_errors(1);
                     return true;
                 }    
-            }                        
-            $sql.= "'".$_POST['date']."', ".$_POST['time_id'].")";
+            }           
+            $date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'],0 , $_POST['month'], $_POST['day'], $_POST['year']));
+            $sql.= "'".$date."')";
             $db->run($sql);
             if ($db->error_result) 
                 display_errors(1);
@@ -563,26 +572,8 @@
                     $team_name = $result['name'];    
                 }
                 
-                if (($_POST['date'] != $match_settlement_info['date']) || ($_POST['time_id'] != $match_settlement_info['time_id'])) {
-                    $arr = array( 1 => '16:00',
-                                  2 => '16:30',
-                                  3 => '17:00',
-                                  4 => '17:30',
-                                  5 => '18:00',
-                                  6 => '18:30',
-                                  7 => '19:00',
-                                  8 => '19:30',
-                                  9 => '20:00',
-                                  10 => '20:30',
-                                  11 => '21:00',
-                                  12 => '21:30',
-                                  13 => '22:00',
-                                  14 => '22:30',
-                                  15 => '23:00',
-                                  16 => '23:30',
-                                  17 => '0:00',
-                                  18 => '0:30');
-                    $sql = "add_settlement_log(".$_GET['match_id'].", '".$user_nick." from ".$team_name." changed the date to ".$_POST['date']." ".$arr[$_POST['time_id']].".')";
+                if ($date != $match_settlement_info['date']) {                    
+                    $sql = "add_settlement_log(".$_GET['match_id'].", '".$user_nick." from ".$team_name." changed the date to ".$date.".')";
                     $db->run($sql);
                 }
                 

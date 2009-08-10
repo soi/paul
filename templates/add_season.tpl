@@ -5,7 +5,7 @@
     <input name="name" value=""/>
     
     <h5 id="login_subhl">Start</h4>
-    <input name="start" value="2000-12-31" size="10"/>
+    <input name="start" value="31.12.2001" size="10"/>
     
     <h5 id="login_subhl">Schedule</h4>
     <select name="schedule">
