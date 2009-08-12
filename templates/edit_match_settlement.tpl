@@ -85,23 +85,28 @@
     <option value="30" {if $match_settlement_info.date|date_format:"%M" == 30} selected {/if}>30</option>
     <option value="45" {if $match_settlement_info.date|date_format:"%M" == 45} selected {/if}>45</option>
 </select>
-<!--  <input type="input" name="date" size="10" value="{$match_settlement_info.date|date_format:"%d.%m.%Y"}"/>     &nbsp;&nbsp;
-<input type="input" name="time" size="5"value="{$match_settlement_info.date|date_format:"%H:%M"}"/>
-<br /> <br /> -->
-<br /> <br /> 
-<h5>Map of {$match_info.team_name_1}  {if $match_settlement_info.map_id_1 == 0} (not selected yet) {/if}</h5> 
-<select name="map_id_1">
-    {foreach from=$league_maps item=one_map}
-        <option value="{$one_map.map_id}" {if $one_map.map_id == $match_settlement_info.map_id_1} selected {/if}">{$one_map.map_name}</option>
-    {/foreach}
-</select>
 <br /> <br />
+<h5>Map of {$match_info.team_name_1}  {if $match_settlement_info.map_id_1 == 0} (not selected yet) {/if}</h5>
+{if $visitor_info.admin || $visitor_info.admin || $match_settlement_info.user_team_id == $match_info.team_id_1 } 
+    <select name="map_id_1">
+        {foreach from=$league_maps item=one_map}
+            <option value="{$one_map.map_id}" {if $one_map.map_id == $match_settlement_info.map_id_1} selected {/if}">{$one_map.map_name}</option>
+        {/foreach}
+    </select>
+    <br /> <br />
+{else}
+    {$match_settlement_info.map_name_1}
+{/if}
 <h5>Map of {$match_info.team_name_2} {if $match_settlement_info.map_id_2 == 0} (not selected yet) {/if}</h5>
-<select name="map_id_2">
-    {foreach from=$league_maps item=one_map}
-        <option value="{$one_map.map_id}" {if $one_map.map_id == $match_settlement_info.map_id_2} selected {/if}">{$one_map.map_name}</option>
-    {/foreach}
-</select>
+{if $visitor_info.admin || $visitor_info.admin || $match_settlement_info.user_team_id == $match_info.team_id_2}
+    <select name="map_id_2">
+        {foreach from=$league_maps item=one_map}
+            <option value="{$one_map.map_id}" {if $one_map.map_id == $match_settlement_info.map_id_2} selected {/if}">{$one_map.map_name}</option>
+        {/foreach}
+    </select>
+{else}
+    {$match_settlement_info.map_name_2}
+{/if}
 <br /><br />
 <h5>Chat (max. 100 characters)</h5>
 <textarea name="chat"></textarea>
