@@ -111,9 +111,27 @@
         return true;    
      }
      
+     /**
+     * Assignes: $match_results, $match_info
+     *
+     * @access public
+     * @return true
+     */
+     
+     function display_confirm_match_result() {
+        if (valid_request(array(isset($_GET['match_id'])))) {
+        
+            global $smarty;
+            
+            assign_match_info($_GET['match_id']);
+            assign_match_results($_GET['match_id']);
+            $smarty->assign('content', $smarty->fetch("confirm_match_result.tpl"));
+        }    
+     }
+     
     
     /**
-     * Assigned: $
+     * Assignes: $division_info, ...
      *
      * @access public
      * @return true
@@ -200,8 +218,28 @@
         return true;
     }
     
+    
     /**
-     * Assignes: $match_info, $match_settlement
+     * Assignes: $match_info, $match_settlement, $match_settlement_log, $league_maps
+     *
+     * @access public
+     * @return true
+     */
+
+    function display_edit_match_result() {
+
+        global $smarty;
+
+        if (valid_request(array(isset($_GET['match_id'])))) {
+            assign_match_info($_GET['match_id']);
+            assign_match_settlement_info($_GET['match_id']);
+            $smarty->assign('content', $smarty->fetch("edit_match_result.tpl"));
+        }
+        return true;
+    }
+    
+    /**
+     * Assignes: $match_info, $match_settlement, $match_settlement_log, $league_maps
      *
      * @access public
      * @return true
@@ -442,6 +480,7 @@
         if (valid_request(array(isset($_GET['match_id'])))) {
             assign_match_info($_GET['match_id']);
             assign_match_results($_GET['match_id']);
+            assign_match_media($_GET['match_id']);
             $smarty->assign('content', $smarty->fetch("match_details.tpl"));
         }
         return true;
@@ -507,7 +546,6 @@
      * Assignes: $succes_info
      *
      * @access public
-     * @param  $string $success_action name of the action; defines a section in the ini file
      * @return true
      */
 
@@ -522,7 +560,6 @@
      * Shows search function if invalid request
      *
      * @access public
-     * @param  string $team_id the related team id
      * @return boolean true
      */
 
@@ -543,11 +580,29 @@
     }
     
     /**
+     * Assignes: $match_info
+     *
+     *
+     * @access public
+     * @return boolean true
+     */
+
+    function display_upload_match_media() {
+
+        global $smarty;
+
+         if (valid_request(array(isset($_GET['match_id'])))) {
+            assign_match_info($_GET['match_id']);
+            $smarty->assign('content', $smarty->fetch("upload_match_media.tpl"));
+        }
+        return true;
+    }
+    
+    /**
      * Assignes: $user_info, $user_teams
      *
      *
      * @access public
-     * @param  string $user_id related user id
      * @return boolean true
      */
 

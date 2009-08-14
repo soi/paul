@@ -1,4 +1,50 @@
 <?php
+
+    /**
+     * Returns if the user has the permission to upload match media
+     *
+     * My permission handling is completly awfull i know
+     *
+     * @return true/false
+     */
+
+    function get_upload_permission() {
+        if (isset($_GET['match_id']) && $_GET['match_id'] != '') {
+        
+            global $db;
+            
+            if ($_SESSION['admin'] || $_SESSION['head_admin']) {
+                return true;
+            }
+
+            // figuring out in which team the user is
+            $sql = "get_user_teams(".$_SESSION['user_id'].")";
+            $db->run($sql);
+            if ($db->empty_result) {
+                return false;
+            }
+            $user_teams = $db->get_result_array();
+    
+            // getting the teams of the match
+            $sql = "get_match_teams(".$_GET['match_id'].")";
+            $db->run($sql);
+            if ($db->empty_result) {
+                return false;
+            }
+            $match_teams = $db->get_result_row();
+    
+            // is one of the match team in the user team array?
+            foreach($user_teams as $key => $user_team) {
+                if ($user_team['team_id'] == $match_teams['team_id_1']) {
+                    return true;
+                }
+                elseif ($user_team['team_id'] == $match_teams['team_id_2']) {
+                    return true;
+                }
+            }
+        }
+        return false;         
+    }
     
     /**
      * If the user wants to enter a site that requires team admin or team writer
@@ -146,24 +192,34 @@
                                     'complete_logout', 
                                     'complete_add_user_guid');
             $perm_sites = array_merge($perm_sites, $area_login_all);
+ 
+            // all member of one team            
+            $area_team_member_all = array('upload_match_media', 
+                                          'complete_upload_match_media');
+            if (in_array($_GET['site'], $area_team_member_all) && get_upload_permission()) {
+                $perm_sites = array_merge($perm_sites, $area_team_member_all);       
+            }
             // team admin / write admin tests
-            $area_team_admin_all = array('edit_team',
+            $area_team_admin_all = array('confirm_match_result',
+                                         'edit_team',
                                          'edit_match_settlement',
+                                         'edit_match_result',
+                                         'complete_confirm_match_result', 
                                          'complete_edit_team',                                         
-                                         'complete_edit_match_settlement');
-            $area_team_writer_all = array('edit_match_settlement',
-                                          'complete_edit_match_settlement');  
+                                         'complete_edit_match_settlement', 
+                                         'complete_edit_match_result');
+            $area_team_writer_all = array('confirm_match_result',
+                                          'edit_match_settlement',
+                                          'edit_match_result',
+                                          'complete_confirm_match_result',
+                                          'complete_edit_match_settlement', 
+                                          'complete_edit_match_result');  
             if (in_array($_GET['site'], $area_team_admin_all)) {
                 $team_permissions = team_permissions();
                 if ($team_permissions['team_admin']) {
-                    $area_team_admin_all = array('edit_team',
-                                                 'edit_match_settlement',
-                                                 'complete_edit_team', 
-                                                 'complete_edit_match_settlement');
                     $perm_sites = array_merge($perm_sites, $area_team_admin_all);    
                 }
-                if ($team_permissions['team_writer']) {
-                    
+                elseif ($team_permissions['team_writer']) {                    
                     $perm_sites = array_merge($perm_sites, $area_team_writer_all);
                 }                    
             }
@@ -326,6 +382,10 @@
                     complete_add_user_guid();
                     break;
                     
+                case 'complete_confirm_match_result' :
+                    complete_confirm_match_result();
+                    break;
+                    
                 case 'complete_create_team':
                     complete_create_team();
                     break;
@@ -340,6 +400,10 @@
                     
                 case 'complete_edit_league':
                     complete_edit_league();
+                    break;
+                    
+                case 'complete_edit_match_result' :
+                    complete_edit_match_result();
                     break;
                     
                 case 'complete_edit_match_settlement' :
@@ -366,12 +430,20 @@
                     complete_login();
                     break;
 
-                 case 'complete_logout':
+                case 'complete_logout':
                     complete_logout();
                     break;
                     
-                 case 'complete_registration':
+                case 'complete_registration':
                     complete_registration();
+                    break;
+                    
+                case 'complete_upload_match_media':
+                    complete_upload_match_media();
+                    break;
+                    
+                case 'confirm_match_result':
+                    display_confirm_match_result();
                     break;
                     
                 case 'create_team':
@@ -394,6 +466,10 @@
                 case 'edit_guid' :
                     display_edit_guid();
                     break;
+                    
+               case 'edit_match_result' :
+                    display_edit_match_result();
+                    break; 
                     
                 case 'edit_match_settlement' :
                     display_edit_match_settlement();
@@ -459,8 +535,12 @@
                     display_season_details();
                     break;                    
     
-                 case 'team':
+                case 'team':
                     display_team();
+                    break;
+                
+                case 'upload_match_media':
+                    display_upload_match_media();
                     break;
                     
                 case 'user':

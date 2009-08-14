@@ -86,7 +86,7 @@
     <option value="45" {if $match_settlement_info.date|date_format:"%M" == 45} selected {/if}>45</option>
 </select>
 <br /> <br />
-<h5>Map of {$match_info.team_name_1}  {if $match_settlement_info.map_id_1 == 0} (not selected yet) {/if}</h5>
+<h5>Map of {$match_info.team_name_1} {if $match_settlement_info.map_id_1 == 0} (not selected yet) {/if}</h5>
 {if $visitor_info.admin || $visitor_info.admin || $match_settlement_info.user_team_id == $match_info.team_id_1 } 
     <select name="map_id_1">
         {foreach from=$league_maps item=one_map}
@@ -95,7 +95,12 @@
     </select>
     <br /> <br />
 {else}
-    {$match_settlement_info.map_name_1}
+    {if $match_settlement_info.map_id_1 == 0} 
+        no map 
+    {else}
+        {$match_settlement_info.map_name_1}
+    {/if} 
+    <input type="hidden" name="map_id_1" value="0"/>   
 {/if}
 <h5>Map of {$match_info.team_name_2} {if $match_settlement_info.map_id_2 == 0} (not selected yet) {/if}</h5>
 {if $visitor_info.admin || $visitor_info.admin || $match_settlement_info.user_team_id == $match_info.team_id_2}
@@ -105,13 +110,18 @@
         {/foreach}
     </select>
 {else}
-    {$match_settlement_info.map_name_2}
+    {if $match_settlement_info.map_id_2 == 0}
+        no map
+    {else}
+        {$match_settlement_info.map_name_2}
+    {/if}
+    <input type="hidden" name="map_id_2" value="0"/> 
 {/if}
 <br /><br />
 <h5>Chat (max. 100 characters)</h5>
 <textarea name="chat"></textarea>
 <br /><br />
-<input type="submit" name="submit" value="Set the settlement"/>
+<input type="submit" value="Set the settlement"/>
 <br /><br />
 Log: <br /> 
 {foreach from=$match_settlement_log item=one_log}

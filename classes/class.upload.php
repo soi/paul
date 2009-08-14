@@ -3,8 +3,8 @@
 // | class.upload.php                                                       |
 // +------------------------------------------------------------------------+
 // | Copyright (c) Colin Verot 2003-2009. All rights reserved.              |
-// | Version       0.27                                                     |
-// | Last modified 14/05/2009                                               |
+// | Version       0.28                                                     |
+// | Last modified 10/08/2009                                               |
 // | Email         colin@verot.net                                          |
 // | Web           http://www.verot.net                                     |
 // +------------------------------------------------------------------------+
@@ -31,7 +31,7 @@
 /**
  * Class upload
  *
- * @version   0.27
+ * @version   0.28
  * @author    Colin Verot <colin@verot.net>
  * @license   http://opensource.org/licenses/gpl-license.php GNU Public License
  * @copyright Colin Verot
@@ -155,6 +155,8 @@
  *  <pre>$handle->file_new_name_body = 'new name';</pre></li>
  *  <li><b>file_name_body_add</b> appends to the name body (default: '')<br>
  *  <pre>$handle->file_name_body_add = '_uploaded';</pre></li>
+ *  <li><b>file_name_body_pre</b> prepends to the name body (default: '')<br>
+ *  <pre>$handle->file_name_body_pre = 'thumb_';</pre></li>
  *  <li><b>file_new_name_ext</b> replaces the file extension (default: '')<br>
  *  <pre>$handle->file_new_name_ext = 'txt';</pre></li>
  *  <li><b>file_safe_name</b> formats the filename (spaces changed to _) (default: true)<br>
@@ -173,6 +175,14 @@
  *  <pre>$handle->file_max_size = '1024'; // 1KB</pre></li>
  *  <li><b>mime_check</b> sets if the class check the MIME against the {@link allowed} list (default: true)<br>
  *  <pre>$handle->mime_check = true;</pre></li>
+ *  <li><b>mime_fileinfo</b> activates MIME detection with Fileinfo PECL extension if true (or a string to set the path to the magic database file); false to deactivate (default: true)<br>
+ *  <pre>$handle->mime_fileinfo = '/usr/share/file/magic';</pre></li>
+ *  <li><b>mime_file</b> activates MIME detection with UNIX file() command if true; false to deactivate (default: true)<br>
+ *  <pre>$handle->mime_file = false;</pre></li>
+ *  <li><b>mime_magic</b> activates MIME detection with mime_magic (mime_content_type()) if true; false to deactivate (default: true)<br>
+ *  <pre>$handle->mime_magic = false;</pre></li>
+ *  <li><b>mime_getimagesize</b> activates MIME detection with getimagesize() if true; false to deactivate (default: true)<br>
+ *  <pre>$handle->mime_getimagesize = false;</pre></li>
  *  <li><b>no_script</b> sets if the class turns scripts into text files (default: true)<br>
  *  <pre>$handle->no_script = false;</pre></li>
  *  <li><b>allowed</b> array of allowed mime-types. wildcard accepted, as in image/* (default: check {@link Init})<br>
@@ -382,6 +392,15 @@
  *
  * <b>Changelog</b>
  * <ul>
+ *  <li><b>v 0.28</b> 10/08/2009<br>
+ *   - replaced ereg functions to be compatible with PHP 5.3<br>
+ *   - added flv MIME type<br>
+ *   - improved MIME type detection<br>
+ *   - added {@link file_name_body_pre} to prepend a string to the file name<br>
+ *   - added {@link mime_fileinfo}, {@link mime_file}, {@link mime_magic} and {@link mime_getimagesize} so that it is possible to deactivate some MIME type checking method<br>
+ *   - use exec() rather than shell_exec(), to play better with safe mode <br>
+ *   - added some error messages<br>
+ *   - fix bug when checking on conditions, {@link processed} wasn't propagated properly</li>
  *  <li><b>v 0.27</b> 14/05/2009<br>
  *   - look for the language files directory from __FILE__<br>
  *   - deactivate {@link file_auto_rename} if {@link file_overwrite} is set<br>
@@ -756,12 +775,20 @@ class upload {
     var $file_new_name_body;
 
     /**
-     * Set this variable to add a string to the faile name body
+     * Set this variable to append a string to the file name body
      *
      * @access public
      * @var string
      */
     var $file_name_body_add;
+
+    /**
+     * Set this variable to prepend a string to the file name body
+     *
+     * @access public
+     * @var string
+     */
+    var $file_name_body_pre;
 
     /**
      * Set this variable to change the file extension
@@ -788,6 +815,57 @@ class upload {
      * @var boolean
      */
     var $mime_check;
+
+    /**
+     * Set this variable to false if you don't want to check the MIME with Fileinfo PECL extension
+     *
+     * You can also set it with the path of the magic database file.
+     * If set to true, the class will try to read the MAGIC environment variable
+     *   and if it is empty, will default to '/usr/share/file/magic'
+     * If set to an empty string, it will call finfo_open without the path argument
+     *
+     * This variable is set to true by default for security reason
+     *
+     * @access public
+     * @var boolean
+     */
+    var $mime_fileinfo;
+
+    /**
+     * Set this variable to false if you don't want to check the MIME with UNIX file() command
+     *
+     * This variable is set to true by default for security reason
+     *
+     * @access public
+     * @var boolean
+     */
+    var $mime_file;
+
+    /**
+     * Set this variable to false if you don't want to check the MIME with the magic.mime file
+     *
+     * The function mime_content_type() will be deprecated,
+     * and this variable will be set to false in a future release
+     *
+     * This variable is set to true by default for security reason
+     *
+     * @access public
+     * @var boolean
+     */
+    var $mime_magic;
+
+    /**
+     * Set this variable to false if you don't want to check the MIME with getimagesize()
+     *
+     * The class tries to get a MIME type from getimagesize()
+     * If no MIME is returned, it tries to guess the MIME type from the file type
+     *
+     * This variable is set to true by default for security reason
+     *
+     * @access public
+     * @var boolean
+     */
+    var $mime_getimagesize;
 
     /**
      * Set this variable to false if you don't want to turn dangerous scripts into simple text files
@@ -1853,6 +1931,7 @@ class upload {
         // overiddable variables
         $this->file_new_name_body       = '';       // replace the name body
         $this->file_name_body_add       = '';       // append to the name body
+        $this->file_name_body_pre       = '';       // prepend to the name body
         $this->file_new_name_ext        = '';       // replace the file extension
         $this->file_safe_name           = true;     // format safely the filename
         $this->file_overwrite           = false;    // allows overwritting if the file already exists
@@ -1861,7 +1940,11 @@ class upload {
         $this->dir_auto_chmod           = true;     // auto-chmod directory if not writeable
         $this->dir_chmod                = 0777;     // default chmod to use
 
-        $this->mime_check               = true;     // don't check the mime type against the allowed list
+        $this->mime_check               = true;     // checks the mime type against the allowed list
+        $this->mime_fileinfo            = true;     // MIME detection with Fileinfo PECL extension
+        $this->mime_file                = true;     // MIME detection with UNIX file() command
+        $this->mime_magic               = true;     // MIME detection with mime_magic (mime_content_type())
+        $this->mime_getimagesize        = true;     // MIME detection with getimagesize()
         $this->no_script                = true;     // turns scripts into test files
 
         $val = trim(ini_get('upload_max_filesize'));
@@ -2044,7 +2127,7 @@ class upload {
      */
     function upload($file, $lang = 'en_GB') {
 
-        $this->version            = '0.27';
+        $this->version            = '0.28';
 
         $this->file_src_name      = '';
         $this->file_src_name_body = '';
@@ -2090,6 +2173,9 @@ class upload {
         $this->translation['uploaded_too_big_html']       = 'File upload error (the uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the html form).';
         $this->translation['uploaded_partial']            = 'File upload error (the uploaded file was only partially uploaded).';
         $this->translation['uploaded_missing']            = 'File upload error (no file was uploaded).';
+        $this->translation['uploaded_no_tmp_dir']         = 'File upload error (missing a temporary folder).';
+        $this->translation['uploaded_cant_write']         = 'File upload error (failed to write file to disk).';
+        $this->translation['uploaded_err_extension']      = 'File upload error (file upload stopped by extension).';
         $this->translation['uploaded_unknown']            = 'File upload error (unknown error code).';
         $this->translation['try_again']                   = 'File upload error. Please try again.';
         $this->translation['file_too_big']                = 'File too big.';
@@ -2204,7 +2290,7 @@ class upload {
                     $this->file_src_pathname   = $file;
                     $this->file_src_name       = basename($file);
                     $this->log .= '- local file name OK<br />';
-                    ereg('\.([^\.]*$)', $this->file_src_name, $extension);
+                    preg_match('/\.([^\.]*$)/', $this->file_src_name, $extension);
                     if (is_array($extension)) {
                         $this->file_src_name_ext      = strtolower($extension[1]);
                         $this->file_src_name_body     = substr($this->file_src_name, 0, ((strlen($this->file_src_name) - strlen($this->file_src_name_ext)))-1);
@@ -2220,27 +2306,39 @@ class upload {
             // this is an element from $_FILE, i.e. an uploaded file
             $this->log .= '<b>source is an uploaded file</b><br />';
             if ($this->uploaded) {
-                $this->file_src_error         = $file['error'];
+                $this->file_src_error         = trim($file['error']);
                 switch($this->file_src_error) {
-                    case 0:
+                    case UPLOAD_ERR_OK:
                         // all is OK
                         $this->log .= '- upload OK<br />';
                         break;
-                    case 1:
+                    case UPLOAD_ERR_INI_SIZE:
                         $this->uploaded = false;
                         $this->error = $this->translate('uploaded_too_big_ini');
                         break;
-                    case 2:
+                    case UPLOAD_ERR_FORM_SIZE:
                         $this->uploaded = false;
                         $this->error = $this->translate('uploaded_too_big_html');
                         break;
-                    case 3:
+                    case UPLOAD_ERR_PARTIAL:
                         $this->uploaded = false;
                         $this->error = $this->translate('uploaded_partial');
                         break;
-                    case 4:
+                    case UPLOAD_ERR_NO_FILE:
                         $this->uploaded = false;
                         $this->error = $this->translate('uploaded_missing');
+                        break;
+                    case @UPLOAD_ERR_NO_TMP_DIR:
+                        $this->uploaded = false;
+                        $this->error = $this->translate('uploaded_no_tmp_dir');
+                        break;
+                    case @UPLOAD_ERR_CANT_WRITE:
+                        $this->uploaded = false;
+                        $this->error = $this->translate('uploaded_cant_write');
+                        break;
+                    case @UPLOAD_ERR_EXTENSION:
+                        $this->uploaded = false;
+                        $this->error = $this->translate('uploaded_err_extension');
                         break;
                     default:
                         $this->uploaded = false;
@@ -2259,7 +2357,7 @@ class upload {
 
             if ($this->uploaded) {
                 $this->log .= '- file name OK<br />';
-                ereg('\.([^\.]*$)', $this->file_src_name, $extension);
+                preg_match('/\.([^\.]*$)/', $this->file_src_name, $extension);
                 if (is_array($extension)) {
                     $this->file_src_name_ext      = strtolower($extension[1]);
                     $this->file_src_name_body     = substr($this->file_src_name, 0, ((strlen($this->file_src_name) - strlen($this->file_src_name_ext)))-1);
@@ -2273,62 +2371,121 @@ class upload {
         }
 
         if ($this->uploaded) {
+            $this->log .= '<b>determining MIME type</b><br />';
             $this->file_src_mime = null;
+
             // checks MIME type with Fileinfo PECL extension
             if (!$this->file_src_mime || !is_string($this->file_src_mime) || empty($this->file_src_mime) || strpos($this->file_src_mime, '/') === FALSE) {
-                if (getenv('MAGIC') === FALSE) {
-                    if (substr(PHP_OS, 0, 3) == 'WIN') {
-                        @putenv('MAGIC=' . realpath(ini_get('extension_dir') . '/../') . 'extras/magic');
+                if ($this->mime_fileinfo) {
+                    $this->log .= '- Checking MIME type with Fileinfo PECL extension<br />';
+                    if (function_exists('finfo_open')) {
+                        if ($this->mime_fileinfo !== '') {
+                            if ($this->mime_fileinfo === true) {
+                                if (getenv('MAGIC') === FALSE) {
+                                    if (substr(PHP_OS, 0, 3) == 'WIN') {
+                                        $path = realpath(ini_get('extension_dir') . '/../') . 'extras/magic';
+                                    } else {
+                                        $path = '/usr/share/file/magic';
+                                    }
+                                    $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MAGIC path defaults to ' . $path . '<br />';
+                                } else {
+                                    $path = getenv('MAGIC');
+                                    $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MAGIC path is set to ' . $path . ' from MAGIC variable<br />';
+                                }
+                            } else {
+                                $path = $this->mime_fileinfo;
+                                $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MAGIC path is set to ' . $path . '<br />';
+                            }
+                            $f = @finfo_open(FILEINFO_MIME, $path);
+                        } else {
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MAGIC path will not be used<br />';
+                            $f = @finfo_open(FILEINFO_MIME);
+                        }
+                        if (is_resource($f)) {
+                            $mime = finfo_file($f, realpath($this->file_src_pathname));
+                            finfo_close($f);
+                            $this->file_src_mime = $mime;
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MIME type detected as ' . $this->file_src_mime . ' by Fileinfo PECL extension<br />';
+                        } else {
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;Fileinfo PECL extension failed (finfo_open)<br />';
+                        }
+                    } elseif (class_exists('finfo')) {
+                        $f = new finfo( FILEINFO_MIME );
+                        if ($f) {
+                            $this->file_src_mime = $f->file(realpath($this->file_src_pathname));
+                            $this->log .= '- MIME type detected as ' . $this->file_src_mime . ' by Fileinfo PECL extension<br />';
+                        } else {
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;Fileinfo PECL extension failed (finfo)<br />';
+                        }
                     } else {
-                        @putenv('MAGIC=/usr/share/file/magic');
+                        $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;Fileinfo PECL extension not available<br />';
                     }
-                }
-                if (function_exists('finfo_open')) {
-                    $f = @finfo_open(FILEINFO_MIME, getenv('MAGIC'));
-                    if (is_resource($f)) {
-                        $mime = finfo_file($f, realpath($this->file_src_pathname));
-                        finfo_close($f);
-                        $this->file_src_mime = $mime;
-                        $this->log .= '- MIME type detected as ' . $this->file_src_mime . ' by Fileinfo PECL extension<br />';
-                    }
-                } elseif (class_exists('finfo')) {
-                    $f = new finfo( FILEINFO_MIME );
-                    if ($f) {
-                        $this->file_src_mime = $f->file(realpath($this->file_src_pathname));
-                        $this->log .= '- MIME type detected as ' . $this->file_src_mime . ' by Fileinfo PECL extension<br />';
-                    }
+                } else {
+                    $this->log .= '- Fileinfo PECL extension deactivated<br />';
                 }
             }
+
             // checks MIME type with shell if unix access is authorized
             if (!$this->file_src_mime || !is_string($this->file_src_mime) || empty($this->file_src_mime) || strpos($this->file_src_mime, '/') === FALSE) {
-                if (substr(PHP_OS, 0, 3) != 'WIN' && strlen($mime = @shell_exec("file -bi ".escapeshellarg($this->file_src_pathname))) != 0) {
-                    if (strpos($mime, ';') !== FALSE) {
-                        $temp = split(';', $mime);
-                        $this->file_src_mime = $temp[0];
+                if ($this->mime_file) {
+                    $this->log .= '- Checking MIME type with UNIX file() command<br />';
+                    if (substr(PHP_OS, 0, 3) != 'WIN') {
+                        if (strlen($mime = @exec("file -bi ".escapeshellarg($this->file_src_pathname))) != 0) {
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MIME returned as ' . $mime . '<br />';
+                            if (strpos($mime, ';') !== FALSE) {
+                                $temp = split(';', $mime);
+                                $this->file_src_mime = $temp[0];
+                            } else if (strpos($mime, ' ') !== FALSE) {
+                                $temp = split(' ', $mime);
+                                $this->file_src_mime = $temp[0];
+                            } else {
+                                $this->file_src_mime = trim($mime);
+                            }
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MIME type detected as ' . $this->file_src_mime . ' by UNIX file() command<br />';
+                        } else {
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;UNIX file() command failed<br />';
+                        }
                     } else {
-                        $this->file_src_mime = trim($mime);
+                        $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;UNIX file() command not availabled<br />';
                     }
-                    $this->log .= '- MIME type detected as ' . $this->file_src_mime . ' by UNIX file() command<br />';
+                } else {
+                    $this->log .= '- UNIX file() command is deactivated<br />';
                 }
             }
 
             // checks MIME type with mime_magic
             if (!$this->file_src_mime || !is_string($this->file_src_mime) || empty($this->file_src_mime) || strpos($this->file_src_mime, '/') === FALSE) {
-                if (function_exists('mime_content_type')) {
-                    $this->file_src_mime = mime_content_type($this->file_src_pathname);
-                    $this->log .= '- MIME type detected as ' . $this->file_src_mime . ' by mime_content_type()<br />';
+                if ($this->mime_magic) {
+                    $this->log .= '- Checking MIME type with mime.magic file (mime_content_type())<br />';
+                    if (function_exists('mime_content_type')) {
+                        $this->file_src_mime = mime_content_type($this->file_src_pathname);
+                        $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MIME type detected as ' . $this->file_src_mime . ' by mime_content_type()<br />';
+                    } else {
+                        $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;mime_content_type() is not available<br />';
+                    }
+                } else {
+                    $this->log .= '- mime.magic file (mime_content_type()) is deactivated<br />';
                 }
             }
+
             // checks MIME type with getimagesize()
             if (!$this->file_src_mime || !is_string($this->file_src_mime) || empty($this->file_src_mime) || strpos($this->file_src_mime, '/') === FALSE) {
-                $info = getimagesize($this->file_src_pathname);
-                if (is_array($info) && array_key_exists('mime', $info)) {
-                    $this->file_src_mime = trim($info['mime']);
-                    if (empty($this->file_src_mime)) {
-                        $mime = (is_array($info) && array_key_exists(2, $info) ? $info[2] : null); // 1 = GIF, 2 = JPG, 3 = PNG
-                        $this->file_src_mime = ($mime==IMAGETYPE_GIF ? 'image/gif' : ($mime==IMAGETYPE_JPEG ? 'image/jpeg' : ($mime==IMAGETYPE_PNG ? 'image/png' : ($mime==IMAGETYPE_BMP ? 'image/bmp' : null))));
+                if ($this->mime_getimagesize) {
+                    $this->log .= '- Checking MIME type with getimagesize()<br />';
+                    $info = getimagesize($this->file_src_pathname);
+                    if (is_array($info) && array_key_exists('mime', $info)) {
+                        $this->file_src_mime = trim($info['mime']);
+                        if (empty($this->file_src_mime)) {
+                            $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MIME empty, guessing from type<br />';
+                            $mime = (is_array($info) && array_key_exists(2, $info) ? $info[2] : null); // 1 = GIF, 2 = JPG, 3 = PNG
+                            $this->file_src_mime = ($mime==IMAGETYPE_GIF ? 'image/gif' : ($mime==IMAGETYPE_JPEG ? 'image/jpeg' : ($mime==IMAGETYPE_PNG ? 'image/png' : ($mime==IMAGETYPE_BMP ? 'image/bmp' : null))));
+                        }
+                        $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MIME type detected as ' . $this->file_src_mime . ' by PHP getimagesize() function<br />';
+                    } else {
+                        $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;getimagesize() failed<br />';
                     }
-                    $this->log .= '- MIME type detected as ' . $this->file_src_mime . ' by PHP getimagesize() function<br />';
+                } else {
+                    $this->log .= '- getimagesize() is deactivated<br />';
                 }
             }
 
@@ -2341,7 +2498,7 @@ class upload {
             // we need to work some magic if we upload via Flash
             if ($this->file_src_mime == 'application/octet-stream' || !$this->file_src_mime || !is_string($this->file_src_mime) || empty($this->file_src_mime) || strpos($this->file_src_mime, '/') === FALSE) {
                 if ($this->file_src_mime == 'application/octet-stream') $this->log .= '- Flash may be rewriting MIME as application/octet-stream<br />';
-                $this->log .= ' - Try to guess MIME type from file extension (' . $this->file_src_name_ext . '): ';
+                $this->log .= '- Try to guess MIME type from file extension (' . $this->file_src_name_ext . '): ';
                 switch($this->file_src_name_ext) {
                     case 'jpg':
                     case 'jpeg':
@@ -2356,6 +2513,9 @@ class upload {
                         break;
                     case 'bmp':
                         $this->file_src_mime = 'image/bmp';
+                        break;
+                    case 'flv':
+                        $this->file_src_mime = 'video/x-flv';
                         break;
                     case 'js' :
                         $this->file_src_mime = 'application/x-javascript';
@@ -2439,7 +2599,7 @@ class upload {
                         break;
                 }
                 if ($this->file_src_mime == 'application/octet-stream') {
-                    $this->log .= 'doesn\t look like anything known<br />';
+                    $this->log .= 'doesn\'t look like anything known<br />';
                 } else {
                     $this->log .= 'MIME type set to ' . $this->file_src_mime . '<br />';
                 }
@@ -2468,7 +2628,8 @@ class upload {
                 }
             }
 
-            $this->log .= '- source variables<br />';
+            $this->log .= '<b>source variables</b><br />';
+            $this->log .= '- You can use all these before calling process()<br />';
             $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;file_src_name         : ' . $this->file_src_name . '<br />';
             $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;file_src_name_body    : ' . $this->file_src_name_body . '<br />';
             $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;file_src_name_ext     : ' . $this->file_src_name_ext . '<br />';
@@ -2738,28 +2899,36 @@ class upload {
         $return_mode        = false;
         $return_content     = null;
 
-        if (empty($server_path) || is_null($server_path)) {
-            $this->log .= '<b>process file and return the content</b><br />';
-            $return_mode = true;
-        } else {
-            if(strtolower(substr(PHP_OS, 0, 3)) === 'win') {
-                if (substr($server_path, -1, 1) != '\\') $server_path = $server_path . '\\';
-            } else {
-                if (substr($server_path, -1, 1) != '/') $server_path = $server_path . '/';
-            }
-            $this->log .= '<b>process file to '  . $server_path . '</b><br />';
+        if (!$this->uploaded) {
+            $this->error = $this->translate('file_not_uploaded');
+            $this->processed = false;
         }
 
-        // checks file size and mine type
-        if ($this->uploaded) {
+        if ($this->processed) {
+            if (empty($server_path) || is_null($server_path)) {
+                $this->log .= '<b>process file and return the content</b><br />';
+                $return_mode = true;
+            } else {
+                if(strtolower(substr(PHP_OS, 0, 3)) === 'win') {
+                    if (substr($server_path, -1, 1) != '\\') $server_path = $server_path . '\\';
+                } else {
+                    if (substr($server_path, -1, 1) != '/') $server_path = $server_path . '/';
+                }
+                $this->log .= '<b>process file to '  . $server_path . '</b><br />';
+            }
+        }
 
+        if ($this->processed) {
+            // checks file max size
             if ($this->file_src_size > $this->file_max_size ) {
                 $this->processed = false;
                 $this->error = $this->translate('file_too_big');
             } else {
                 $this->log .= '- file size OK<br />';
             }
+        }
 
+        if ($this->processed) {
             // turn dangerous scripts into text files
             if ($this->no_script) {
                 if (((substr($this->file_src_mime, 0, 5) == 'text/' || strpos($this->file_src_mime, 'javascript') !== false)  && (substr($this->file_src_name, -4) != '.txt'))
@@ -2799,7 +2968,7 @@ class upload {
                     $this->log .= '- file mime OK : ' . $this->file_src_mime . '<br />';
                 }
             } else {
-                $this->log .= '- file mime OK : ' . $this->file_src_mime . '<br />';
+                $this->log .= '- file mime (not checked) : ' . $this->file_src_mime . '<br />';
             }
 
             // if the file is an image, we can check on its dimensions
@@ -2843,11 +3012,6 @@ class upload {
                     $this->log .= '- no image properties available, can\'t enforce dimension checks : ' . $this->file_src_mime . '<br />';
                 }
             }
-
-
-        } else {
-            $this->error = $this->translate('file_not_uploaded');
-            $this->processed = false;
         }
 
         if ($this->processed) {
@@ -2871,13 +3035,17 @@ class upload {
                 $this->file_dst_name_ext  = $this->file_new_name_ext;
                 $this->log .= '- new file name ext : ' . $this->file_new_name_ext . '<br />';
             }
-            if ($this->file_name_body_add != '') { // append a bit to the name
+            if ($this->file_name_body_add != '') { // append a string to the name
                 $this->file_dst_name_body  = $this->file_dst_name_body . $this->file_name_body_add;
-                $this->log .= '- file name body add : ' . $this->file_name_body_add . '<br />';
+                $this->log .= '- file name body append : ' . $this->file_name_body_add . '<br />';
+            }
+            if ($this->file_name_body_pre != '') { // prepend a string to the name
+                $this->file_dst_name_body  = $this->file_name_body_pre . $this->file_dst_name_body;
+                $this->log .= '- file name body prepend : ' . $this->file_name_body_pre . '<br />';
             }
             if ($this->file_safe_name) { // formats the name
                 $this->file_dst_name_body = str_replace(array(' ', '-'), array('_','_'), $this->file_dst_name_body) ;
-                $this->file_dst_name_body = ereg_replace('[^A-Za-z0-9_]', '', $this->file_dst_name_body) ;
+                $this->file_dst_name_body = preg_replace('/[^A-Za-z0-9_]/', '', $this->file_dst_name_body) ;
                 $this->log .= '- file name safe format<br />';
             }
 
@@ -2959,97 +3127,97 @@ class upload {
                     }
                 }
             }
-        } else {
-            $this->processed = false;
         }
 
-        // if we have already moved the uploaded file, we use the temporary copy as source file, and check if it exists
-        if (!empty($this->file_src_temp)) {
-            $this->log .= '- use the temp file instead of the original file since it is a second process<br />';
-            $this->file_src_pathname   = $this->file_src_temp;
-            if (!file_exists($this->file_src_pathname)) {
-                $this->processed = false;
-                $this->error = $this->translate('temp_file_missing');
-            }
-        // if we haven't a temp file, and that we do check on uploads, we use is_uploaded_file()
-        } else if (!$this->no_upload_check) {
-            if (!is_uploaded_file($this->file_src_pathname)) {
-                $this->processed = false;
-                $this->error = $this->translate('source_missing');
-            }
-        // otherwise, if we don't check on uploaded files (local file for instance), we use file_exists()
-        } else {
-            if (!file_exists($this->file_src_pathname)) {
-                $this->processed = false;
-                $this->error = $this->translate('source_missing');
-            }
-        }
-
-        // checks if the destination directory exists, and attempt to create it
-        if (!$return_mode) {
-            if ($this->processed && !file_exists($this->file_dst_path)) {
-                if ($this->dir_auto_create) {
-                    $this->log .= '- ' . $this->file_dst_path . ' doesn\'t exist. Attempting creation:';
-                    if (!$this->rmkdir($this->file_dst_path, $this->dir_chmod)) {
-                        $this->log .= ' failed<br />';
-                        $this->processed = false;
-                        $this->error = $this->translate('destination_dir');
-                    } else {
-                        $this->log .= ' success<br />';
-                    }
-                } else {
-                    $this->error = $this->translate('destination_dir_missing');
+        if ($this->processed) {
+            // if we have already moved the uploaded file, we use the temporary copy as source file, and check if it exists
+            if (!empty($this->file_src_temp)) {
+                $this->log .= '- use the temp file instead of the original file since it is a second process<br />';
+                $this->file_src_pathname   = $this->file_src_temp;
+                if (!file_exists($this->file_src_pathname)) {
+                    $this->processed = false;
+                    $this->error = $this->translate('temp_file_missing');
+                }
+            // if we haven't a temp file, and that we do check on uploads, we use is_uploaded_file()
+            } else if (!$this->no_upload_check) {
+                if (!is_uploaded_file($this->file_src_pathname)) {
+                    $this->processed = false;
+                    $this->error = $this->translate('source_missing');
+                }
+            // otherwise, if we don't check on uploaded files (local file for instance), we use file_exists()
+            } else {
+                if (!file_exists($this->file_src_pathname)) {
+                    $this->processed = false;
+                    $this->error = $this->translate('source_missing');
                 }
             }
 
-            if ($this->processed && !is_dir($this->file_dst_path)) {
-                $this->processed = false;
-                $this->error = $this->translate('destination_path_not_dir');
-            }
-
-            // checks if the destination directory is writeable, and attempt to make it writeable
-            $hash = md5($this->file_dst_name_body . rand(1, 1000));
-            if ($this->processed && !($f = @fopen($this->file_dst_path . $hash . '.' . $this->file_dst_name_ext, 'a+'))) {
-                if ($this->dir_auto_chmod) {
-                    $this->log .= '- ' . $this->file_dst_path . ' is not writeable. Attempting chmod:';
-                    if (!@chmod($this->file_dst_path, $this->dir_chmod)) {
-                        $this->log .= ' failed<br />';
-                        $this->processed = false;
-                        $this->error = $this->translate('destination_dir_write');
+            // checks if the destination directory exists, and attempt to create it
+            if (!$return_mode) {
+                if ($this->processed && !file_exists($this->file_dst_path)) {
+                    if ($this->dir_auto_create) {
+                        $this->log .= '- ' . $this->file_dst_path . ' doesn\'t exist. Attempting creation:';
+                        if (!$this->rmkdir($this->file_dst_path, $this->dir_chmod)) {
+                            $this->log .= ' failed<br />';
+                            $this->processed = false;
+                            $this->error = $this->translate('destination_dir');
+                        } else {
+                            $this->log .= ' success<br />';
+                        }
                     } else {
-                        $this->log .= ' success<br />';
-                        if (!($f = @fopen($this->file_dst_path . $hash . '.' . $this->file_dst_name_ext, 'a+'))) { // we re-check
+                        $this->error = $this->translate('destination_dir_missing');
+                    }
+                }
+
+                if ($this->processed && !is_dir($this->file_dst_path)) {
+                    $this->processed = false;
+                    $this->error = $this->translate('destination_path_not_dir');
+                }
+
+                // checks if the destination directory is writeable, and attempt to make it writeable
+                $hash = md5($this->file_dst_name_body . rand(1, 1000));
+                if ($this->processed && !($f = @fopen($this->file_dst_path . $hash . '.' . $this->file_dst_name_ext, 'a+'))) {
+                    if ($this->dir_auto_chmod) {
+                        $this->log .= '- ' . $this->file_dst_path . ' is not writeable. Attempting chmod:';
+                        if (!@chmod($this->file_dst_path, $this->dir_chmod)) {
+                            $this->log .= ' failed<br />';
                             $this->processed = false;
                             $this->error = $this->translate('destination_dir_write');
                         } else {
-                            @fclose($f);
+                            $this->log .= ' success<br />';
+                            if (!($f = @fopen($this->file_dst_path . $hash . '.' . $this->file_dst_name_ext, 'a+'))) { // we re-check
+                                $this->processed = false;
+                                $this->error = $this->translate('destination_dir_write');
+                            } else {
+                                @fclose($f);
+                            }
                         }
+                    } else {
+                        $this->processed = false;
+                        $this->error = $this->translate('destination_path_write');
                     }
                 } else {
-                    $this->processed = false;
-                    $this->error = $this->translate('destination_path_write');
+                    if ($this->processed) @fclose($f);
+                    @unlink($this->file_dst_path . $hash . '.' . $this->file_dst_name_ext);
                 }
-            } else {
-                if ($this->processed) @fclose($f);
-                @unlink($this->file_dst_path . $hash . '.' . $this->file_dst_name_ext);
-            }
 
 
-            // if we have an uploaded file, and if it is the first process, and if we can't access the file directly (open_basedir restriction)
-            // then we create a temp file that will be used as the source file in subsequent processes
-            // the third condition is there to check if the file is not accessible *directly* (it already has positively gone through is_uploaded_file(), so it exists)
-            if (!$this->no_upload_check && empty($this->file_src_temp) && !@file_exists($this->file_src_pathname)) {
-                $this->log .= '- attempting creating a temp file:';
-                $hash = md5($this->file_dst_name_body . rand(1, 1000));
-                if (move_uploaded_file($this->file_src_pathname, $this->file_dst_path . $hash . '.' . $this->file_dst_name_ext)) {
-                    $this->file_src_pathname = $this->file_dst_path . $hash . '.' . $this->file_dst_name_ext;
-                    $this->file_src_temp = $this->file_src_pathname;
-                    $this->log .= ' file created<br />';
-                    $this->log .= '    temp file is: ' . $this->file_src_temp . '<br />';
-                } else {
-                    $this->log .= ' failed<br />';
-                    $this->processed = false;
-                    $this->error = $this->translate('temp_file');
+                // if we have an uploaded file, and if it is the first process, and if we can't access the file directly (open_basedir restriction)
+                // then we create a temp file that will be used as the source file in subsequent processes
+                // the third condition is there to check if the file is not accessible *directly* (it already has positively gone through is_uploaded_file(), so it exists)
+                if (!$this->no_upload_check && empty($this->file_src_temp) && !@file_exists($this->file_src_pathname)) {
+                    $this->log .= '- attempting to use a temp file:';
+                    $hash = md5($this->file_dst_name_body . rand(1, 1000));
+                    if (move_uploaded_file($this->file_src_pathname, $this->file_dst_path . $hash . '.' . $this->file_dst_name_ext)) {
+                        $this->file_src_pathname = $this->file_dst_path . $hash . '.' . $this->file_dst_name_ext;
+                        $this->file_src_temp = $this->file_src_pathname;
+                        $this->log .= ' file created<br />';
+                        $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;temp file is: ' . $this->file_src_temp . '<br />';
+                    } else {
+                        $this->log .= ' failed<br />';
+                        $this->processed = false;
+                        $this->error = $this->translate('temp_file');
+                    }
                 }
             }
         }
@@ -4242,7 +4410,7 @@ class upload {
                 $this->log .= '- no image processing wanted<br />';
 
                 if (!$return_mode) {
-		            // copy the file to its final destination. we don't use move_uploaded_file here
+                    // copy the file to its final destination. we don't use move_uploaded_file here
                     // if we happen to have open_basedir restrictions, it is a temp file that we copy, not the original uploaded file
                     if (!copy($this->file_src_pathname, $this->file_dst_pathname)) {
                         $this->processed = false;
@@ -4261,8 +4429,10 @@ class upload {
 
         if ($this->processed) {
             $this->log .= '- <b>process OK</b><br />';
-
+        } else {
+            $this->log .= '- <b>error</b>: ' . $this->error . '<br />';
         }
+
         // we reinit all the vars
         $this->init();
 

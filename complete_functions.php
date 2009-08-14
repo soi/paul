@@ -298,7 +298,47 @@
         }
     }
     
+    /**
+     * Confirms a match result which basicly means that the match status wil be increased from 1 to 2
+     *
+     * @access public
+     * @return true
+     */
     
+    function complete_confirm_match_result() {
+        if (valid_request(array(isset($_GET['match_id'])))) {
+            
+            global $smarty;
+            global $db; 
+            
+            $sql = "get_match_status(".$_GET['match_id'].")";
+            $db->run($sql);
+            if ($db->error_result) {
+                display_errors(1);
+                return true;
+            }
+            else {
+                $status = $db->get_result_row();
+                if ($status['status'] != 1) {
+                    display_errors(702);
+                    return true;
+                }
+            } 
+            
+            $sql = "confirm_match_result(".$_GET['match_id'].")";
+            $db->run($sql);
+            
+            if ($db->error_result)
+                display_errors(1);
+            else {
+                display_success("confirm_match_result", $_GET['match_id']);
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));
+            }
+            
+        }      
+        
+      
+    }
 
     
     /**
@@ -477,6 +517,69 @@
      }
      
      /**
+     * Checks a edit_match_result request for invalid inputs if the matchn is in state 0
+     *
+     * 0 -> no match activity so far
+     * 1 -> the match result was entered by one party
+     * 2 -> the match result was cofirmed
+     * 3 -> the match is in protest state
+     *
+     * @access public
+     * @return true
+     */
+     
+     function complete_edit_match_result() {
+        if (valid_request(array(isset($_GET['match_id']),
+                                isset($_POST['result_1_1']),
+                                isset($_POST['result_1_2']),
+                                isset($_POST['result_2_1']),
+                                isset($_POST['result_2_2'])))) {
+            
+            global $smarty;
+            global $db;
+            
+            $sql = "get_match_status(".$_GET['match_id'].")";            
+            $db->run($sql);
+            if ($db->error_result) {
+                display_errors(1);
+                return true;
+            }
+            else {
+                $status = $db->get_result_row();
+                if ($status['status'] != 0) {
+                    display_errors(701);
+                    return true;    
+                }     
+            } 
+                        
+            $regex = '/^\d+$/';
+            if (!preg_match($regex, $_POST['result_1_1']) ||
+                !preg_match($regex, $_POST['result_1_2']) ||
+                !preg_match($regex, $_POST['result_2_1']) ||
+                !preg_match($regex, $_POST['result_2_2'])) {
+                
+                display_errors(700);
+                return true;    
+            }
+            
+            $sql = "edit_match_result(".$_GET['match_id'].", 
+                                      ".$_POST['result_1_1'].", 
+                                      ".$_POST['result_1_2'].",
+                                      ".$_POST['result_2_1'].",
+                                      ".$_POST['result_2_2'].")";
+            $db->run($sql);
+            if ($db->error_result) {
+                display_errors(1);
+                return true;
+            }
+            else {
+                display_success("edit_match_result", $_GET['match_id']);
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));    
+            }
+        }
+     }
+     
+     /**
      * Checks a edit_match_settlement request for invalid inputs and performs all
      * actions if no (permission) error occurs
      *
@@ -502,14 +605,6 @@
                 display_errors(650);
                 return true;
             }                    
-            /*if (!preg_match(DATE_REGEX, $_POST['date'])) {
-                display_errors(554);
-                return true;
-            } 
-            if (!preg_match(TIME_REGEX, $_POST['time'])) {
-                display_errors(651);
-                return true;
-            }       */
             
             //checking for which map the user has rights; only setting this map
             $sql = "get_match_teams(".$_GET['match_id'].")";
@@ -578,14 +673,14 @@
                 }
                 
                 // maps changed?                
-                if (($_SESSION['admin'] || $_SESSION['head_admin']) || (($_GET['team_id'] == $match_teams['team_id_1']) && ($_POST['map_id_1'] != $match_settlement_info['map_id_1']))) {
+                if (($_POST['map_id_1'] != $match_settlement_info['map_id_1']) && ($_SESSION['admin'] || $_SESSION['head_admin'] || ($_GET['team_id'] == $match_teams['team_id_1']))) {
                     $sql = "get_map_name(".$_POST['map_id_1'].")";
                     $db->run($sql);
                     $map_name = $db->get_result_row();
                     $sql = "add_settlement_log(".$_GET['match_id'].", '".$user_nick." from ".$team_name." changed the map to ".$map_name['name'].".')";
                     $db->run($sql);    
                 }
-                if (($_SESSION['admin'] || $_SESSION['head_admin']) || (($_GET['team_id'] == $match_teams['team_id_2']) && ($_POST['map_id_2'] != $match_settlement_info['map_id_2']))) {
+                if (($_POST['map_id_2'] != $match_settlement_info['map_id_2']) && ($_SESSION['admin'] || $_SESSION['head_admin'] || ($_GET['team_id'] == $match_teams['team_id_2']))) {
                     $sql = "get_map_name(".$_POST['map_id_2'].")";
                     $db->run($sql);
                     $map_name = $db->get_result_row();
@@ -976,6 +1071,64 @@
             display_success("registration");
             $smarty->assign('content', $smarty->fetch("succes.tpl"));
         }
+        return true;
+    }
+    
+    /**
+     * Checks a registration request for invalid inputs
+     *
+     * @access public
+     * @return true
+     */
+    
+    function complete_upload_match_media() {
+        if (valid_request(array(isset($_GET['match_id']), 
+                                isset($_FILES['match_media']), 
+                                isset($_POST['description'])))) {
+            
+            require(CLASS_PATH.'class.upload.php');
+
+            global $db;
+            global $smarty;                    
+            
+            if (strlen($_POST['description']) < 2 || strlen($_POST['description']) > 20 ) {
+                display_errors(751);
+                return true;
+            }               
+            
+            $upload = new Upload($_FILES['match_media']);
+            if ($upload->uploaded) {
+                //getting the internal file name out of the current time
+                $name = microtime();
+                $name = substr($name, 2, 8).substr($name, 11);                
+                $upload->file_new_name_body = $name;
+                $upload->allowed = array('application/zip', 'image/*');
+                $upload->process(MATCH_MEDIA_PATH);
+                if ($upload->processed) {
+                    $sql = "add_match_media(".$_GET['match_id'].",
+                                            ".$_SESSION['user_id'].",
+                                            '".$_POST['description']."',
+                                            '".$upload->file_dst_name."', 
+                                            ".filesize($upload->file_dst_pathname).")";
+                    $db->run($sql);
+                    if ($db->error_result) {                        
+                        display_errors(750);
+                    }    
+                    else {
+                        display_success("upload_match_media");
+                        $smarty->assign('content', $smarty->fetch("succes.tpl"));    
+                    }    
+                }
+                else {
+                    display_errors(750);    
+                }
+                $upload->clean();    
+            }
+            else {
+                display_errors(750);
+                return true;
+            }        
+        }    
         return true;
     }
 

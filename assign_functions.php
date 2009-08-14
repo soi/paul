@@ -364,10 +364,32 @@
         global $db;
 
         $sql = "get_match_info(".$match_id.")";
-
         $db->run($sql);
-        $smarty->assign('match_info', $db->get_result_row());
+        $info = $db->get_result_row();
+        $info['match_media_folder'] = MATCH_MEDIA_PATH;
+        $smarty->assign('match_info', $info);
 
+        return true;
+    }
+    
+    
+    /**
+     * Assignes the $match_demedia template variable with the info about the match media
+     *
+     * @access public
+     * @param string $match_id related id
+     * @return true
+    */
+    
+    function assign_match_media($match_id) {
+
+        global $smarty;
+        global $db;
+
+        $sql = "get_match_media(".$match_id.")";
+        $db->run($sql);
+
+        $smarty->assign('match_media', $db->get_result_array());
         return true;
     }
     
