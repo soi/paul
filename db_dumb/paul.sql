@@ -102,7 +102,7 @@ CREATE TABLE `game` (
 
 LOCK TABLES `game` WRITE;
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
-INSERT INTO `game` VALUES (1,1,'gamename1','gamedesc1'),(2,1,'AO:T','Assault On Terrorr'),(3,2,'CounterStrike:Source',''),(4,2,'Day of Defeat',''),(5,2,'COD4',''),(7,1,'FAR CRY 2',''),(8,2,'Crysis',''),(11,2,'TEst Game',''),(12,1,'log_test',''),(14,1,'log_testex',''),(15,1,'toc',''),(20,1,'log_test_1',''),(22,1,'log_test_2',''),(23,1,'sudoku',''),(24,2,'tetris',''),(28,2,'testgame',''),(30,2,'testgame2','');
+INSERT INTO `game` VALUES (1,1,'gamename1','gamedesc1'),(2,1,'AO:T','Assault On Terrorr'),(3,2,'CounterStrike:Source',''),(4,2,'Day of Defeat',''),(5,2,'COD4',''),(7,13,'FAR CRY 2',''),(8,2,'Crysis',''),(11,2,'TEst Game',''),(12,1,'log_test',''),(14,1,'log_testex',''),(15,1,'toc',''),(20,1,'log_test_1',''),(22,1,'log_test_2',''),(23,1,'sudoku',''),(24,2,'tetris',''),(28,7,'testgame',''),(30,2,'testgame2','');
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,7 +235,7 @@ CREATE TABLE `logging` (
   `method` char(6) NOT NULL,
   `message` varchar(255) NOT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,7 +244,7 @@ CREATE TABLE `logging` (
 
 LOCK TABLES `logging` WRITE;
 /*!40000 ALTER TABLE `logging` DISABLE KEYS */;
-INSERT INTO `logging` VALUES (1,'2009-08-02 15:03:17','sd','sf'),(2,'2009-08-02 15:06:02','INSERT','game with namelog_testex has been created'),(3,'2009-08-02 15:20:01','INSERT','game with nametoc has been inserted'),(4,'2009-08-02 15:22:53','INSERT','Game with name log_test_1 (id: 20) has been inserted.'),(5,'2009-08-02 15:23:53','INSERT','Game with name \'log_test_2\' (id: 22) has been inserted.'),(6,'2009-08-02 15:29:53','INSERT','Game with name sudoku (id: 23) has been inserted.'),(7,'2009-08-02 15:40:29','INSERT','New Guid riper (with id: 13) has been inserted.'),(8,'2009-08-02 15:46:50','INSERT','New Guid \'riper2\' (with id: 15) has been inserted.'),(9,'2009-08-02 22:20:37','INSERT','New League \'liga1with game_id \'1\' (with id: 8) has been inserted.'),(10,'2009-08-02 22:26:34','INSERT','New League \'liga2\'with Game ID \'2\' (with id: 9) has been inserted.'),(11,'2009-08-02 22:27:24','INSERT','New League \'liga3\' with Game ID \'3\' (with id: 10) has been inserted.'),(12,'2009-08-02 22:29:24','INSERT','Map with name \'Blister\' (id: 5) has been inserted.'),(13,'2009-08-02 22:32:20','INSERT','Game with name \'tetris\' (with id: 24) has been inserted.'),(14,'2009-08-02 22:33:21','INSERT','Map with name \'map1\' (with id: 6) has been inserted.'),(15,'2009-08-08 15:15:48','INSERT','Game with name \'testgame\' (with id: 28) has been inserted.'),(16,'2009-08-08 15:16:05','INSERT','Game with name \'testgame2\' (with id: 30) has been inserted.'),(17,'2009-08-08 15:36:09','INSERT','Team with name \'team222\' (with id: 158) has been inserted.'),(18,'2009-08-08 15:47:50','INSERT','New League \'Liga22\' (with id: 11) with Game ID \'2\' has been inserted.'),(19,'2009-08-08 15:57:20','INSERT','Team with team_id \'1\' (with id: 345) with div_id \'1\' has been inserted.'),(20,'2009-08-08 15:57:36','INSERT','Team with team_id \'1\' (with id: 346) with div_id \'2\' has been inserted.'),(21,'2009-08-08 15:58:11','INSERT','Team with team_id \'2\' (with id: 349) with div_id \'2\' has been inserted.'),(22,'2009-08-08 15:58:41','INSERT','Team with team_id \'1\' (with id: 350) with div_id \'1\' has been inserted.'),(23,'2009-08-08 16:06:29','INSERT','Team with team_id \'1\' (with id: 353) with div_id \'1\' has been inserted into table \"team_in_division\".'),(24,'2009-08-08 16:18:05','INSERT','New User \'last1\' (with id: 15) with last name \'last1\' with first name \'first1\' has been inserted.'),(25,'2009-08-08 16:28:08','INSERT','New guid_id \'2\' (with id: 9) for User ID \'2\' has been inserted.'),(26,'2009-08-08 16:32:32','INSERT','New GUID ID \'2\' (with id: 10) for User ID \'2\' has been inserted.'),(27,'2009-08-08 18:59:52','UPDATE','Game \'gamename1\' (with Game ID: 1) has been updated.'),(28,'2009-08-08 19:02:46','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(29,'2009-08-08 19:03:52','UPDATE','Game \'gamename1\' with Game ID: \'1\' has been updated.'),(30,'2009-08-08 19:05:14','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(31,'2009-08-08 19:20:59','DELETE','All signed up teams have been deleted from the League with ID \'1\'.'),(32,'2009-08-08 19:24:42','UPDATE','Guid \'bla\' (with Guid ID: \'1\') has been updated.'),(33,'2009-08-08 19:26:43','UPDATE','Guid \'bla\' (with ID: \'1\') has been updated.'),(34,'2009-08-08 19:31:20','UPDATE','League \'bla\' (with ID: \'1\') has been updated.'),(35,'2009-08-08 19:55:42','UPDATE','Match Settlement (with ID: \'1\') has been updated.'),(36,'2009-08-08 20:02:12','UPDATE','User Profile for user with ID: \'1\') has been updated.'),(37,'2009-08-08 20:22:45','SELECT','Admin information about user with ID: \'1\') has been selected.'),(38,'2009-08-08 20:45:27','SELECT','Information about division from league with ID: \'1\') has been selected.'),(39,'2009-08-08 22:17:10','INSERT','Match (id: 1377) of division with id \'1 and matchday 1 has been inserted.'),(40,'2009-08-08 22:17:28','INSERT','Match (id: 1378) of division with id \'1 and matchday 1 has been inserted.'),(41,'2009-08-08 22:18:06','INSERT','Match (id: 1379) of division with id \'1 and matchday 1 has been inserted.'),(42,'2009-08-08 22:18:06','INSERT','Match settlement (id: 2) of match with id \'1379 has been inserted.'),(43,'2009-08-09 00:43:28','SELECT','Admin information about user with ID: \'12\') has been selected.'),(44,'2009-08-09 01:30:26','SELECT','Admin information about user with ID: \'14\') has been selected.'),(45,'2009-08-09 02:44:10','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(46,'2009-08-09 02:44:43','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(47,'2009-08-09 02:45:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(48,'2009-08-09 02:50:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(49,'2009-08-09 02:51:19','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(50,'2009-08-09 02:51:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(51,'2009-08-09 02:53:02','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(52,'2009-08-09 02:54:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(53,'2009-08-09 02:57:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(54,'2009-08-09 02:57:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(55,'2009-08-09 03:05:39','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(56,'2009-08-09 03:05:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(57,'2009-08-09 03:06:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(58,'2009-08-09 03:07:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(59,'2009-08-09 03:13:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(60,'2009-08-09 03:13:52','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(61,'2009-08-09 03:14:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(62,'2009-08-09 03:18:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(63,'2009-08-09 03:19:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(64,'2009-08-09 03:20:15','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(65,'2009-08-09 03:21:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(66,'2009-08-09 03:21:51','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(67,'2009-08-09 03:22:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(68,'2009-08-09 03:22:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(69,'2009-08-09 03:23:06','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(70,'2009-08-09 03:23:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(71,'2009-08-09 03:23:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(72,'2009-08-09 03:24:24','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(73,'2009-08-09 03:25:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(74,'2009-08-09 03:25:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(75,'2009-08-09 03:30:43','SELECT','Admin information about user with ID: \'12\') has been selected.'),(76,'2009-08-09 03:31:17','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(77,'2009-08-09 03:31:38','SELECT','Admin information about user with ID: \'2\') has been selected.'),(78,'2009-08-09 03:32:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(79,'2009-08-09 03:33:41','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(80,'2009-08-09 03:33:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(81,'2009-08-09 22:02:17','INSERT','Match (id: 1380) of division with id \'1 and matchday 1 has been inserted.'),(82,'2009-08-09 22:02:52','INSERT','Match (id: 1381) of division with id \'1 and matchday 1 has been inserted.'),(83,'2009-08-09 22:03:36','INSERT','Match (id: 1382) of division with id \'1 and matchday 1 has been inserted.'),(84,'2009-08-10 02:06:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(85,'2009-08-10 02:06:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(86,'2009-08-10 02:07:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(87,'2009-08-10 02:07:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(88,'2009-08-10 02:11:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(89,'2009-08-10 02:11:38','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(90,'2009-08-10 02:12:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(91,'2009-08-10 02:12:53','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(92,'2009-08-10 02:13:12','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(93,'2009-08-10 02:13:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(94,'2009-08-12 16:03:45','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(95,'2009-08-12 16:28:20','SELECT','Admin information about user with ID: \'2\') has been selected.'),(96,'2009-08-12 16:31:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(97,'2009-08-12 16:51:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(98,'2009-08-12 16:52:18','SELECT','Admin information about user with ID: \'12\') has been selected.'),(99,'2009-08-12 16:52:31','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(100,'2009-08-12 17:06:23','SELECT','Admin information about user with ID: \'2\') has been selected.'),(101,'2009-08-12 17:06:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(102,'2009-08-12 20:25:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(103,'2009-08-12 20:28:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(104,'2009-08-12 20:28:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(105,'2009-08-12 20:28:49','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(106,'2009-08-14 03:24:41','SELECT','Admin information about user with ID: \'3\') has been selected.'),(107,'2009-08-14 03:25:03','SELECT','Admin information about user with ID: \'4\') has been selected.'),(108,'2009-08-14 03:25:24','SELECT','Admin information about user with ID: \'5\') has been selected.'),(109,'2009-08-14 03:25:41','SELECT','Admin information about user with ID: \'14\') has been selected.');
+INSERT INTO `logging` VALUES (1,'2009-08-02 15:03:17','sd','sf'),(2,'2009-08-02 15:06:02','INSERT','game with namelog_testex has been created'),(3,'2009-08-02 15:20:01','INSERT','game with nametoc has been inserted'),(4,'2009-08-02 15:22:53','INSERT','Game with name log_test_1 (id: 20) has been inserted.'),(5,'2009-08-02 15:23:53','INSERT','Game with name \'log_test_2\' (id: 22) has been inserted.'),(6,'2009-08-02 15:29:53','INSERT','Game with name sudoku (id: 23) has been inserted.'),(7,'2009-08-02 15:40:29','INSERT','New Guid riper (with id: 13) has been inserted.'),(8,'2009-08-02 15:46:50','INSERT','New Guid \'riper2\' (with id: 15) has been inserted.'),(9,'2009-08-02 22:20:37','INSERT','New League \'liga1with game_id \'1\' (with id: 8) has been inserted.'),(10,'2009-08-02 22:26:34','INSERT','New League \'liga2\'with Game ID \'2\' (with id: 9) has been inserted.'),(11,'2009-08-02 22:27:24','INSERT','New League \'liga3\' with Game ID \'3\' (with id: 10) has been inserted.'),(12,'2009-08-02 22:29:24','INSERT','Map with name \'Blister\' (id: 5) has been inserted.'),(13,'2009-08-02 22:32:20','INSERT','Game with name \'tetris\' (with id: 24) has been inserted.'),(14,'2009-08-02 22:33:21','INSERT','Map with name \'map1\' (with id: 6) has been inserted.'),(15,'2009-08-08 15:15:48','INSERT','Game with name \'testgame\' (with id: 28) has been inserted.'),(16,'2009-08-08 15:16:05','INSERT','Game with name \'testgame2\' (with id: 30) has been inserted.'),(17,'2009-08-08 15:36:09','INSERT','Team with name \'team222\' (with id: 158) has been inserted.'),(18,'2009-08-08 15:47:50','INSERT','New League \'Liga22\' (with id: 11) with Game ID \'2\' has been inserted.'),(19,'2009-08-08 15:57:20','INSERT','Team with team_id \'1\' (with id: 345) with div_id \'1\' has been inserted.'),(20,'2009-08-08 15:57:36','INSERT','Team with team_id \'1\' (with id: 346) with div_id \'2\' has been inserted.'),(21,'2009-08-08 15:58:11','INSERT','Team with team_id \'2\' (with id: 349) with div_id \'2\' has been inserted.'),(22,'2009-08-08 15:58:41','INSERT','Team with team_id \'1\' (with id: 350) with div_id \'1\' has been inserted.'),(23,'2009-08-08 16:06:29','INSERT','Team with team_id \'1\' (with id: 353) with div_id \'1\' has been inserted into table \"team_in_division\".'),(24,'2009-08-08 16:18:05','INSERT','New User \'last1\' (with id: 15) with last name \'last1\' with first name \'first1\' has been inserted.'),(25,'2009-08-08 16:28:08','INSERT','New guid_id \'2\' (with id: 9) for User ID \'2\' has been inserted.'),(26,'2009-08-08 16:32:32','INSERT','New GUID ID \'2\' (with id: 10) for User ID \'2\' has been inserted.'),(27,'2009-08-08 18:59:52','UPDATE','Game \'gamename1\' (with Game ID: 1) has been updated.'),(28,'2009-08-08 19:02:46','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(29,'2009-08-08 19:03:52','UPDATE','Game \'gamename1\' with Game ID: \'1\' has been updated.'),(30,'2009-08-08 19:05:14','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(31,'2009-08-08 19:20:59','DELETE','All signed up teams have been deleted from the League with ID \'1\'.'),(32,'2009-08-08 19:24:42','UPDATE','Guid \'bla\' (with Guid ID: \'1\') has been updated.'),(33,'2009-08-08 19:26:43','UPDATE','Guid \'bla\' (with ID: \'1\') has been updated.'),(34,'2009-08-08 19:31:20','UPDATE','League \'bla\' (with ID: \'1\') has been updated.'),(35,'2009-08-08 19:55:42','UPDATE','Match Settlement (with ID: \'1\') has been updated.'),(36,'2009-08-08 20:02:12','UPDATE','User Profile for user with ID: \'1\') has been updated.'),(37,'2009-08-08 20:22:45','SELECT','Admin information about user with ID: \'1\') has been selected.'),(38,'2009-08-08 20:45:27','SELECT','Information about division from league with ID: \'1\') has been selected.'),(39,'2009-08-08 22:17:10','INSERT','Match (id: 1377) of division with id \'1 and matchday 1 has been inserted.'),(40,'2009-08-08 22:17:28','INSERT','Match (id: 1378) of division with id \'1 and matchday 1 has been inserted.'),(41,'2009-08-08 22:18:06','INSERT','Match (id: 1379) of division with id \'1 and matchday 1 has been inserted.'),(42,'2009-08-08 22:18:06','INSERT','Match settlement (id: 2) of match with id \'1379 has been inserted.'),(43,'2009-08-09 00:43:28','SELECT','Admin information about user with ID: \'12\') has been selected.'),(44,'2009-08-09 01:30:26','SELECT','Admin information about user with ID: \'14\') has been selected.'),(45,'2009-08-09 02:44:10','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(46,'2009-08-09 02:44:43','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(47,'2009-08-09 02:45:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(48,'2009-08-09 02:50:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(49,'2009-08-09 02:51:19','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(50,'2009-08-09 02:51:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(51,'2009-08-09 02:53:02','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(52,'2009-08-09 02:54:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(53,'2009-08-09 02:57:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(54,'2009-08-09 02:57:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(55,'2009-08-09 03:05:39','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(56,'2009-08-09 03:05:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(57,'2009-08-09 03:06:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(58,'2009-08-09 03:07:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(59,'2009-08-09 03:13:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(60,'2009-08-09 03:13:52','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(61,'2009-08-09 03:14:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(62,'2009-08-09 03:18:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(63,'2009-08-09 03:19:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(64,'2009-08-09 03:20:15','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(65,'2009-08-09 03:21:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(66,'2009-08-09 03:21:51','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(67,'2009-08-09 03:22:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(68,'2009-08-09 03:22:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(69,'2009-08-09 03:23:06','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(70,'2009-08-09 03:23:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(71,'2009-08-09 03:23:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(72,'2009-08-09 03:24:24','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(73,'2009-08-09 03:25:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(74,'2009-08-09 03:25:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(75,'2009-08-09 03:30:43','SELECT','Admin information about user with ID: \'12\') has been selected.'),(76,'2009-08-09 03:31:17','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(77,'2009-08-09 03:31:38','SELECT','Admin information about user with ID: \'2\') has been selected.'),(78,'2009-08-09 03:32:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(79,'2009-08-09 03:33:41','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(80,'2009-08-09 03:33:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(81,'2009-08-09 22:02:17','INSERT','Match (id: 1380) of division with id \'1 and matchday 1 has been inserted.'),(82,'2009-08-09 22:02:52','INSERT','Match (id: 1381) of division with id \'1 and matchday 1 has been inserted.'),(83,'2009-08-09 22:03:36','INSERT','Match (id: 1382) of division with id \'1 and matchday 1 has been inserted.'),(84,'2009-08-10 02:06:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(85,'2009-08-10 02:06:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(86,'2009-08-10 02:07:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(87,'2009-08-10 02:07:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(88,'2009-08-10 02:11:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(89,'2009-08-10 02:11:38','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(90,'2009-08-10 02:12:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(91,'2009-08-10 02:12:53','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(92,'2009-08-10 02:13:12','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(93,'2009-08-10 02:13:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(94,'2009-08-12 16:03:45','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(95,'2009-08-12 16:28:20','SELECT','Admin information about user with ID: \'2\') has been selected.'),(96,'2009-08-12 16:31:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(97,'2009-08-12 16:51:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(98,'2009-08-12 16:52:18','SELECT','Admin information about user with ID: \'12\') has been selected.'),(99,'2009-08-12 16:52:31','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(100,'2009-08-12 17:06:23','SELECT','Admin information about user with ID: \'2\') has been selected.'),(101,'2009-08-12 17:06:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(102,'2009-08-12 20:25:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(103,'2009-08-12 20:28:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(104,'2009-08-12 20:28:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(105,'2009-08-12 20:28:49','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(106,'2009-08-14 03:24:41','SELECT','Admin information about user with ID: \'3\') has been selected.'),(107,'2009-08-14 03:25:03','SELECT','Admin information about user with ID: \'4\') has been selected.'),(108,'2009-08-14 03:25:24','SELECT','Admin information about user with ID: \'5\') has been selected.'),(109,'2009-08-14 03:25:41','SELECT','Admin information about user with ID: \'14\') has been selected.'),(110,'2009-08-15 00:24:58','SELECT','Admin information about user with ID: \'4\') has been selected.'),(111,'2009-08-15 00:26:01','SELECT','Admin information about user with ID: \'4\') has been selected.'),(112,'2009-08-15 00:28:20','INSERT','Team with name \'moep\' (with id: 160) has been inserted.'),(113,'2009-08-15 00:29:26','SELECT','Admin information about user with ID: \'2\') has been selected.'),(114,'2009-08-15 00:40:31','UPDATE','Game \'FAR CRY 2\' (with ID: \'7\') has been updated.'),(115,'2009-08-15 00:40:40','UPDATE','Guid \'name1\' (with ID: \'12\') has been updated.'),(116,'2009-08-15 00:40:54','INSERT','Map with name \'rotzmap\' (with id: 7) has been inserted.'),(117,'2009-08-15 00:41:15','UPDATE','Game \'testgame\' (with ID: \'28\') has been updated.'),(118,'2009-08-15 01:23:27','SELECT','Admin information about user with ID: \'4\') has been selected.'),(119,'2009-08-15 01:23:38','SELECT','Admin information about user with ID: \'4\') has been selected.'),(120,'2009-08-15 01:23:44','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(121,'2009-08-15 01:24:00','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(122,'2009-08-15 01:24:32','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(123,'2009-08-15 01:24:47','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(124,'2009-08-15 01:24:59','SELECT','Admin information about user with ID: \'2\') has been selected.'),(125,'2009-08-15 01:25:03','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(126,'2009-08-15 01:25:17','UPDATE','Team \'team61\' (with ID: \'105\') has been updated.'),(127,'2009-08-15 01:25:18','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(128,'2009-08-15 01:25:49','UPDATE','User Profile for user with ID: \'2\') has been updated.'),(129,'2009-08-15 01:26:04','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(130,'2009-08-15 01:26:14','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(131,'2009-08-15 01:26:26','UPDATE','Team \'team62\' (with ID: \'106\') has been updated.'),(132,'2009-08-15 01:26:33','UPDATE','Team \'team62\' (with ID: \'106\') has been updated.'),(133,'2009-08-15 01:26:55','SELECT','Admin information about user with ID: \'4\') has been selected.'),(134,'2009-08-15 01:26:57','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(135,'2009-08-15 01:27:13','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(136,'2009-08-15 01:27:25','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(137,'2009-08-15 01:30:47','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(138,'2009-08-15 01:30:54','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(139,'2009-08-15 01:31:17','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(140,'2009-08-15 01:31:47','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(141,'2009-08-15 01:32:06','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(142,'2009-08-15 01:32:13','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(143,'2009-08-15 01:35:09','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(144,'2009-08-15 01:35:36','SELECT','Admin information about user with ID: \'2\') has been selected.'),(145,'2009-08-15 01:35:42','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(146,'2009-08-15 01:37:18','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(147,'2009-08-15 01:37:28','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(148,'2009-08-15 01:39:36','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(149,'2009-08-15 02:35:38','INSERT','Team with name \'hdgfthrhntzn\' (with id: 161) has been inserted.'),(150,'2009-08-15 02:35:45','INSERT','Team with name \'rtttt\' (with id: 162) has been inserted.'),(151,'2009-08-15 02:47:51','UPDATE','User Profile for user with id: \'2\') has been updated.'),(152,'2009-08-15 02:47:56','UPDATE','Team \'stargamerztu\' (with id: \'1\') has been updated.'),(153,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'2\' in team with id \'1\' has been updated.'),(154,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'4\' in team with id \'1\' has been updated.'),(155,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'5\' in team with id \'1\' has been updated.'),(156,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'11\' in team with id \'1\' has been updated.'),(157,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'3\' in team with id \'1\' has been updated.'),(158,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'12\' in team with id \'1\' has been updated.');
 /*!40000 ALTER TABLE `logging` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +260,7 @@ CREATE TABLE `map` (
   `name` char(50) NOT NULL,
   PRIMARY KEY (`map_id`),
   UNIQUE KEY `UNIQUE_1` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,7 +269,7 @@ CREATE TABLE `map` (
 
 LOCK TABLES `map` WRITE;
 /*!40000 ALTER TABLE `map` DISABLE KEYS */;
-INSERT INTO `map` VALUES (5,'Blister'),(3,'de_dust2'),(4,'de_prodigy'),(6,'map1'),(1,'OBJ-Anvil'),(2,'OBJ-Dagger');
+INSERT INTO `map` VALUES (5,'Blister'),(3,'de_dust2'),(4,'de_prodigy'),(6,'map1'),(1,'OBJ-Anvil'),(2,'OBJ-Dagger'),(7,'rotzmap');
 /*!40000 ALTER TABLE `map` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -510,7 +510,7 @@ CREATE TABLE `team` (
   `join_password` char(50) NOT NULL,
   PRIMARY KEY (`t_id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -519,7 +519,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES (1,'stargamerz','sG','COOL GUYSSS','2009-06-17','starz'),(2,'Glück gehabt','GG','immer glücklich','2009-06-17','glück'),(19,'TEAM Alternate','TEAM Alternate','TEAM Alternate Werksteam','2009-07-01','alternate'),(20,'Hoorai','hoorai','hoorai team','2009-07-01','hoorai'),(21,'SNOGARD Dragons','SONGARD','snogard dragons werksteam','2009-07-01','snogard'),(22,'TEAM Speedlink','TEAM Speedlink','Team Speedlink werksteam','2009-07-01','speedlink'),(23,'TEAM Thermaltake','TEAM Thermatake','team thermaltake werksteam','2009-07-01','thermaltake'),(24,'KomaCrew','KC','die Komacrew','2009-07-01','komacrew'),(25,'ESC','ESC','ESC gaming','2009-07-01','esc'),(26,'YDK','ydk?me','you dont know me','2009-07-01','ydk'),(27,'MTW','MTW','Mortal team work','2009-07-01','mtw'),(28,'TAIFUN','TAIFUN','Taifun!!','2009-07-01','taifun'),(29,'Clan00','00','doppelnullen','2009-07-01','clan00'),(30,'EnRo Griffins','EnRo','enro bois','2009-07-01','enro'),(31,'bomk','bomk *','bomk kings','2009-07-01','bomk'),(32,'N!Faculty','n!','en faculty','2009-07-01','nfaculty'),(33,'Hardware4You','h4u','hardware for you','2009-07-01','h4u'),(34,'Raptor Gaming','raptor','raprap','2009-07-01','raptor'),(38,'abcbb','','','2009-07-10','scuq2x95'),(39,'as','','','2009-07-11','acd'),(40,'hgf','','','2009-07-11','exuq2b8i'),(41,'ghc','','','2009-07-11','s7olvs3c'),(42,'acd','','','2009-07-11','x3lvs3zv'),(44,'team0','tag0','desc0','2009-07-21',''),(45,'team1','tag1','desc1','2009-07-21',''),(46,'team2','tag2','desc2','2009-07-21',''),(47,'team3','tag3','desc3','2009-07-21',''),(48,'team4','tag4','desc4','2009-07-21',''),(49,'team5','tag5','desc5','2009-07-21',''),(50,'team6','tag6','desc6','2009-07-21',''),(51,'team7','tag7','desc7','2009-07-21',''),(52,'team8','tag8','desc8','2009-07-21',''),(53,'team9','tag9','desc9','2009-07-21',''),(54,'team10','tag10','desc10','2009-07-21',''),(55,'team11','tag11','desc11','2009-07-21',''),(56,'team12','tag12','desc12','2009-07-21',''),(57,'team13','tag13','desc13','2009-07-21',''),(58,'team14','tag14','desc14','2009-07-21',''),(59,'team15','tag15','desc15','2009-07-21',''),(60,'team16','tag16','desc16','2009-07-21',''),(61,'team17','tag17','desc17','2009-07-21',''),(62,'team18','tag18','desc18','2009-07-21',''),(63,'team19','tag19','desc19','2009-07-21',''),(64,'team20','tag20','desc20','2009-07-21',''),(65,'team21','tag21','desc21','2009-07-21',''),(66,'team22','tag22','desc22','2009-07-21',''),(67,'team23','tag23','desc23','2009-07-21',''),(68,'team24','tag24','desc24','2009-07-21',''),(69,'team25','tag25','desc25','2009-07-21',''),(70,'team26','tag26','desc26','2009-07-21',''),(71,'team27','tag27','desc27','2009-07-21',''),(72,'team28','tag28','desc28','2009-07-21',''),(73,'team29','tag29','desc29','2009-07-21',''),(74,'team30','tag30','desc30','2009-07-21',''),(75,'team31','tag31','desc31','2009-07-21',''),(76,'team32','tag32','desc32','2009-07-21',''),(77,'team33','tag33','desc33','2009-07-21',''),(78,'team34','tag34','desc34','2009-07-21',''),(79,'team35','tag35','desc35','2009-07-21',''),(80,'team36','tag36','desc36','2009-07-21',''),(81,'team37','tag37','desc37','2009-07-21',''),(82,'team38','tag38','desc38','2009-07-21',''),(83,'team39','tag39','desc39','2009-07-21',''),(84,'team40','tag40','desc40','2009-07-21',''),(85,'team41','tag41','desc41','2009-07-21',''),(86,'team42','tag42','desc42','2009-07-21',''),(87,'team43','tag43','desc43','2009-07-21',''),(88,'team44','tag44','desc44','2009-07-21',''),(89,'team45','tag45','desc45','2009-07-21',''),(90,'team46','tag46','desc46','2009-07-21',''),(91,'team47','tag47','desc47','2009-07-21',''),(92,'team48','tag48','desc48','2009-07-21',''),(93,'team49','tag49','desc49','2009-07-21',''),(94,'team50','tag50','desc50','2009-07-21',''),(95,'team51','tag51','desc51','2009-07-21',''),(96,'team52','tag52','desc52','2009-07-21',''),(97,'team53','tag53','desc53','2009-07-21',''),(98,'team54','tag54','desc54','2009-07-21',''),(99,'team55','tag55','desc55','2009-07-21',''),(100,'team56','tag56','desc56','2009-07-21',''),(101,'team57','tag57','desc57','2009-07-21',''),(102,'team58','tag58','desc58','2009-07-21',''),(103,'team59','tag59','desc59','2009-07-21',''),(104,'team60','tag60','desc60','2009-07-21',''),(105,'team61','tag61','desc61','2009-07-21',''),(106,'team62','tag62','desc62','2009-07-21',''),(107,'team63','tag63','desc63','2009-07-21',''),(108,'team64','tag64','desc64','2009-07-21',''),(109,'team65','tag65','desc65','2009-07-21',''),(110,'team66','tag66','desc66','2009-07-21',''),(111,'team67','tag67','desc67','2009-07-21',''),(112,'team68','tag68','desc68','2009-07-21',''),(113,'team69','tag69','desc69','2009-07-21',''),(114,'team70','tag70','desc70','2009-07-21',''),(115,'team71','tag71','desc71','2009-07-21',''),(116,'team72','tag72','desc72','2009-07-21',''),(117,'team73','tag73','desc73','2009-07-21',''),(118,'team74','tag74','desc74','2009-07-21',''),(120,'team75','tag75','desc75','2009-07-21',''),(121,'team76','tag76','desc76','2009-07-21',''),(122,'team77','tag77','desc77','2009-07-21',''),(123,'team78','tag78','desc78','2009-07-21',''),(124,'team79','tag79','desc79','2009-07-21',''),(125,'team80','tag80','desc80','2009-07-21',''),(126,'team81','tag81','desc81','2009-07-21',''),(127,'team82','tag82','desc82','2009-07-21',''),(128,'team83','tag83','desc83','2009-07-21',''),(129,'team84','tag84','desc84','2009-07-21',''),(130,'team85','tag85','desc85','2009-07-21',''),(131,'team86','tag86','desc86','2009-07-21',''),(132,'team87','tag87','desc87','2009-07-21',''),(133,'team88','tag88','desc88','2009-07-21',''),(134,'team89','tag89','desc89','2009-07-21',''),(135,'team90','tag90','desc90','2009-07-21',''),(136,'team91','tag91','desc91','2009-07-21',''),(137,'team92','tag92','desc92','2009-07-21',''),(138,'team93','tag93','desc93','2009-07-21',''),(139,'team94','tag94','desc94','2009-07-21',''),(140,'team95','tag95','desc95','2009-07-21',''),(141,'team96','tag96','desc96','2009-07-21',''),(142,'team97','tag97','desc97','2009-07-21',''),(143,'team98','tag98','desc98','2009-07-21',''),(144,'team99','tag99','desc99','2009-07-21',''),(145,'team100','tag100','desc100','2009-07-21',''),(146,'team101','tag101','desc101','2009-07-21',''),(147,'team102','tag102','desc102','2009-07-21',''),(148,'team103','tag103','desc103','2009-07-21',''),(149,'team104','tag104','desc104','2009-07-21',''),(150,'team105','tag105','desc105','2009-07-21',''),(151,'team106','tag106','desc106','2009-07-21',''),(152,'team107','tag107','desc107','2009-07-21',''),(153,'team108','tag108','desc108','2009-07-21',''),(154,'team109','tag109','desc109','2009-07-21',''),(158,'team222','','','2009-08-08','password1');
+INSERT INTO `team` VALUES (1,'stargamerztu','sGFF','COOL GUYSSS','2009-06-17','starz'),(2,'Glück gehabt','GG','immer glücklich','2009-06-17','glück'),(19,'TEAM Alternate','TEAM Alternate','TEAM Alternate Werksteam','2009-07-01','alternate'),(20,'Hoorai','hoorai','hoorai team','2009-07-01','hoorai'),(21,'SNOGARD Dragons','SONGARD','snogard dragons werksteam','2009-07-01','snogard'),(22,'TEAM Speedlink','TEAM Speedlink','Team Speedlink werksteam','2009-07-01','speedlink'),(23,'TEAM Thermaltake','TEAM Therma','team thermaltake werkstea','2009-07-01','thermaltak'),(24,'KomaCrew','KC','die Komacrew','2009-07-01','komacrew'),(25,'ESC','ESC','ESC gaming','2009-07-01','esc'),(26,'YDK','ydk?me','you dont know me','2009-07-01','ydk'),(27,'MTW','MTW','Mortal team work','2009-07-01','mtw'),(28,'TAIFUN','TAIFUN','Taifun!!','2009-07-01','taifun'),(29,'Clan00','00','doppelnullen','2009-07-01','clan00'),(30,'EnRo Griffins','EnRo','enro bois','2009-07-01','enro'),(31,'bomk','bomk *','bomk kings','2009-07-01','bomk'),(32,'N!Faculty','n!','en faculty','2009-07-01','nfaculty'),(33,'Hardware4You','h4u','hardware for you','2009-07-01','h4u'),(34,'Raptor Gaming','raptor','raprap','2009-07-01','raptor'),(38,'abcbb','','','2009-07-10','scuq2x95'),(39,'as','','','2009-07-11','acd'),(40,'hgf','','','2009-07-11','exuq2b8i'),(41,'ghc','','','2009-07-11','s7olvs3c'),(42,'acd','','','2009-07-11','x3lvs3zv'),(44,'team0','tag0','desc0','2009-07-21',''),(45,'team1','tag1','desc1','2009-07-21',''),(46,'team2','tag2','desc2','2009-07-21',''),(47,'team3','tag3','desc3','2009-07-21',''),(48,'team4','tag4','desc4','2009-07-21',''),(49,'team5','tag5','desc5','2009-07-21',''),(50,'team6','tag6','desc6','2009-07-21',''),(51,'team7','tag7','desc7','2009-07-21',''),(52,'team8','tag8','desc8','2009-07-21',''),(53,'team9','tag9','desc9','2009-07-21',''),(54,'team10','tag10','desc10','2009-07-21',''),(55,'team11','tag11','desc11','2009-07-21',''),(56,'team12','tag12','desc12','2009-07-21',''),(57,'team13','tag13','desc13','2009-07-21',''),(58,'team14','tag14','desc14','2009-07-21',''),(59,'team15','tag15','desc15','2009-07-21',''),(60,'team16','tag16','desc16','2009-07-21',''),(61,'team17','tag17','desc17','2009-07-21',''),(62,'team18','tag18','desc18','2009-07-21',''),(63,'team19','tag19','desc19','2009-07-21',''),(64,'team20','tag20','desc20','2009-07-21',''),(65,'team21','tag21','desc21','2009-07-21',''),(66,'team22','tag22','desc22','2009-07-21',''),(67,'team23','tag23','desc23','2009-07-21',''),(68,'team24','tag24','desc24','2009-07-21',''),(69,'team25','tag25','desc25','2009-07-21',''),(70,'team26','tag26','desc26','2009-07-21',''),(71,'team27','tag27','desc27','2009-07-21',''),(72,'team28','tag28','desc28','2009-07-21',''),(73,'team29','tag29','desc29','2009-07-21',''),(74,'team30','tag30','desc30','2009-07-21',''),(75,'team31','tag31','desc31','2009-07-21',''),(76,'team32','tag32','desc32','2009-07-21',''),(77,'team33','tag33','desc33','2009-07-21',''),(78,'team34','tag34','desc34','2009-07-21',''),(79,'team35','tag35','desc35','2009-07-21',''),(80,'team36','tag36','desc36','2009-07-21',''),(81,'team37','tag37','desc37','2009-07-21',''),(82,'team38','tag38','desc38','2009-07-21',''),(83,'team39','tag39','desc39','2009-07-21',''),(84,'team40','tag40','desc40','2009-07-21',''),(85,'team41','tag41','desc41','2009-07-21',''),(86,'team42','tag42','desc42','2009-07-21',''),(87,'team43','tag43','desc43','2009-07-21',''),(88,'team44','tag44','desc44','2009-07-21',''),(89,'team45','tag45','desc45','2009-07-21',''),(90,'team46','tag46','desc46','2009-07-21',''),(91,'team47','tag47','desc47','2009-07-21',''),(92,'team48','tag48','desc48','2009-07-21',''),(93,'team49','tag49','desc49','2009-07-21',''),(94,'team50','tag50','desc50','2009-07-21',''),(95,'team51','tag51','desc51','2009-07-21',''),(96,'team52','tag52','desc52','2009-07-21',''),(97,'team53','tag53','desc53','2009-07-21',''),(98,'team54','tag54','desc54','2009-07-21',''),(99,'team55','tag55','desc55','2009-07-21',''),(100,'team56','tag56','desc56','2009-07-21',''),(101,'team57','tag57','desc57','2009-07-21',''),(102,'team58','tag58','desc58','2009-07-21',''),(103,'team59','tag59','desc59','2009-07-21',''),(104,'team60','tag60','desc60','2009-07-21',''),(105,'team61','tag61','desc61','2009-07-21','aaa'),(106,'team62','tag62','desc62','2009-07-21','111'),(107,'team63','tag63','desc63','2009-07-21',''),(108,'team64','tag64','desc64','2009-07-21',''),(109,'team65','tag65','desc65','2009-07-21',''),(110,'team66','tag66','desc66','2009-07-21',''),(111,'team67','tag67','desc67','2009-07-21',''),(112,'team68','tag68','desc68','2009-07-21',''),(113,'team69','tag69','desc69','2009-07-21',''),(114,'team70','tag70','desc70','2009-07-21',''),(115,'team71','tag71','desc71','2009-07-21',''),(116,'team72','tag72','desc72','2009-07-21',''),(117,'team73','tag73','desc73','2009-07-21',''),(118,'team74','tag74','desc74','2009-07-21',''),(120,'team75','tag75','desc75','2009-07-21',''),(121,'team76','tag76','desc76','2009-07-21',''),(122,'team77','tag77','desc77','2009-07-21',''),(123,'team78','tag78','desc78','2009-07-21',''),(124,'team79','tag79','desc79','2009-07-21',''),(125,'team80','tag80','desc80','2009-07-21',''),(126,'team81','tag81','desc81','2009-07-21',''),(127,'team82','tag82','desc82','2009-07-21',''),(128,'team83','tag83','desc83','2009-07-21',''),(129,'team84','tag84','desc84','2009-07-21',''),(130,'team85','tag85','desc85','2009-07-21',''),(131,'team86','tag86','desc86','2009-07-21',''),(132,'team87','tag87','desc87','2009-07-21',''),(133,'team88','tag88','desc88','2009-07-21',''),(134,'team89','tag89','desc89','2009-07-21',''),(135,'team90','tag90','desc90','2009-07-21',''),(136,'team91','tag91','desc91','2009-07-21',''),(137,'team92','tag92','desc92','2009-07-21',''),(138,'team93','tag93','desc93','2009-07-21',''),(139,'team94','tag94','desc94','2009-07-21',''),(140,'team95','tag95','desc95','2009-07-21',''),(141,'team96','tag96','desc96','2009-07-21',''),(142,'team97','tag97','desc97','2009-07-21',''),(143,'team98','tag98','desc98','2009-07-21',''),(144,'team99','tag99','desc99','2009-07-21',''),(145,'team100','tag100','desc100','2009-07-21',''),(146,'team101','tag101','desc101','2009-07-21',''),(147,'team102','tag102','desc102','2009-07-21',''),(148,'team103','tag103','desc103','2009-07-21',''),(149,'team104','tag104','desc104','2009-07-21',''),(150,'team105','tag105','desc105','2009-07-21',''),(151,'team106','tag106','desc106','2009-07-21',''),(152,'team107','tag107','desc107','2009-07-21',''),(153,'team108','tag108','desc108','2009-07-21',''),(154,'team109','tag109','desc109','2009-07-21',''),(158,'team222','','','2009-08-08','password1'),(160,'moep','','','2009-08-15','bbbbbbbb'),(161,'hdgfthrhntzn','','','2009-08-15','fyhdnkgd'),(162,'rtttt','','','2009-08-15','wgyv62yu');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -663,7 +663,7 @@ CREATE TABLE `user_in_team` (
   CONSTRAINT `user_in_team_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `user_in_team_ibfk_2` FOREIGN KEY (`t_id`) REFERENCES `team` (`t_id`),
   CONSTRAINT `user_in_team_ibfk_3` FOREIGN KEY (`tst_id`) REFERENCES `team_status_type` (`tst_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -672,7 +672,7 @@ CREATE TABLE `user_in_team` (
 
 LOCK TABLES `user_in_team` WRITE;
 /*!40000 ALTER TABLE `user_in_team` DISABLE KEYS */;
-INSERT INTO `user_in_team` VALUES (2,3,1,0,0,4),(3,4,1,1,1,3),(4,5,2,0,0,3),(7,5,1,0,0,4),(8,4,2,0,0,4),(9,3,2,0,1,4),(24,11,1,1,1,4),(25,12,1,0,1,5),(33,12,2,0,0,4),(36,2,38,1,1,4),(37,2,39,1,1,4),(38,3,39,0,0,4),(39,4,40,1,1,4),(40,2,41,1,1,4),(44,2,1,1,1,2),(45,14,42,1,1,4),(47,12,19,1,1,1),(50,14,20,1,1,1);
+INSERT INTO `user_in_team` VALUES (2,3,1,0,0,4),(3,4,1,1,1,3),(4,5,2,0,0,3),(7,5,1,0,0,4),(8,4,2,0,0,4),(9,3,2,0,1,4),(24,11,1,1,1,4),(25,12,1,0,1,5),(33,12,2,0,0,4),(36,2,38,1,1,4),(37,2,39,1,1,4),(38,3,39,0,0,4),(39,4,40,1,1,4),(40,2,41,1,1,4),(44,2,1,1,1,2),(45,14,42,1,1,4),(47,12,19,1,1,1),(50,14,20,1,1,1),(51,4,112,1,1,4),(52,2,149,1,1,4),(53,2,150,1,1,4);
 /*!40000 ALTER TABLE `user_in_team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -718,7 +718,7 @@ BEGIN
   game_name,
 	guid_id);
 
-  CALL `log`('INSERT', CONCAT('Game with name \'', game_name, '\' (with id: ', LAST_INSERT_ID(), ') has been inserted.'));
+  CALL `log`('INSERT', CONCAT('Game with name \'', game_name, '\' (id: ', LAST_INSERT_ID(), ') has been inserted.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -740,7 +740,7 @@ BEGIN
 	INSERT into guid (name) values  (
   guid_name);
 
-  CALL `log`('INSERT', CONCAT('New Guid \'', guid_name, '\' (with id: ', LAST_INSERT_ID(), ') has been inserted.'));
+  CALL `log`('INSERT', CONCAT('New Guid \'', guid_name, '\' (id: ', LAST_INSERT_ID(), ') has been inserted.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -763,7 +763,7 @@ BEGIN
 	league_name,
 	game_id,
   1);
-  CALL `log`('INSERT', CONCAT('New League \'', league_name, '\' (with id: ', LAST_INSERT_ID(), ') with Game ID \'', game_id, '\' has been inserted.'));
+  CALL `log`('INSERT', CONCAT('New League \'', league_name, '\' (id: ', LAST_INSERT_ID(), ') of game with id: \'', game_id, '\' has been inserted.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -783,7 +783,7 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `add_map`(IN map_name char(50))
 BEGIN
   INSERT INTO map (name) VALUES (map_name);
-  CALL `log`('INSERT', CONCAT('Map with name \'', map_name, '\' (with id: ', LAST_INSERT_ID(), ') has been inserted.'));
+  CALL `log`('INSERT', CONCAT('Map with name \'', map_name, '\' (id: ', LAST_INSERT_ID(), ') has been inserted.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -804,7 +804,7 @@ DELIMITER ;;
                                              IN league_id INTEGER UNSIGNED)
 BEGIN
   INSERT INTO map_in_league (map_id, l_id) VALUES (map_id_, league_id);
-  CALL `log`('INSERT', CONCAT('Map with id \'', map_id, '\' (with map_in_league id: ', LAST_INSERT_ID(), ') has been inserted into league with id: \'', league_id, '\'.'));
+  CALL `log`('INSERT', CONCAT('Map with id \'', map_id, 'has been inserted into league with id: \'', league_id, '\'.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -887,7 +887,6 @@ DELIMITER ;;
                                            IN file_name char(30),
                                            IN file_size INTEGER UNSIGNED)
 BEGIN
-
   INSERT INTO match_media (m_id, u_id, name, description, size, `date`) VALUES (
     match_id,
     user_id,
@@ -895,6 +894,8 @@ BEGIN
     description,
     file_size,
     NOW());
+
+  CALL `log`('INSERT', CONCAT('Match media for match with id \'', match_id, '\' was inserted by user with id \'', user_id, '\'.'));
 
 END */;;
 DELIMITER ;
@@ -975,6 +976,8 @@ BEGIN
   log_message,
   match_id,
   NOW());
+
+  CALL `log`('INSERT', CONCAT('Match settlement log for match with id \'', match_id, ' \' has been inserted.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1006,21 +1009,16 @@ BEGIN
   set team_id = LAST_INSERT_ID();
 
   
-    INSERT into user_in_team (u_id, t_id, admin_permission, write_permission, tst_id) values (
-           user_id,
-           team_id,
-           1,
-           1,
-           4);
+  INSERT into user_in_team (u_id, t_id, admin_permission, write_permission, tst_id) values (
+    user_id,
+    team_id,
+    1,
+    1,
+    4);
+
+  CALL `log`('INSERT', CONCAT('User with id \'', u_id, '\' has been granted full admin right for team with id: \'', team_id, '\' as he just created the team.'));
+
   SELECT team_id as t_id;
-  
-
-  
-
-  
-
-  
-
 
 END */;;
 DELIMITER ;
@@ -1117,7 +1115,7 @@ BEGIN
   the_guid,
   NOW());
 
-  CALL `log`('INSERT', CONCAT('New Guid ID \'', guid_id, '\' (with id: ', LAST_INSERT_ID(), ') for User ID \'', user_id, '\' has been inserted.'));
+  CALL `log`('INSERT', CONCAT('New Guid \'', the_guid, '\' (type id: ', guid_id, ') for user with id \'', user_id, '\' has been inserted.'));
 
 END */;;
 DELIMITER ;
@@ -1140,6 +1138,8 @@ BEGIN
   UPDATE `match`
   SET `status` = 2
   WHERE m_id = match_id;
+
+  CALL `log`('UPDATE', CONCAT('Match result for match with id \'', match_id, '\' has been confirmed.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1284,6 +1284,8 @@ BEGIN
   SET `status` = 1
   WHERE m_id = match_id;
 
+  CALL `log`('UPDATE', CONCAT('Match results for match with id \'', match_id, '\') have been updated. Match status updated to \'1\''));
+
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1317,7 +1319,7 @@ BEGIN
   SET `date` = match_date
   WHERE m_id = match_id;
 
-  CALL `log`('UPDATE', CONCAT('Match Settlement (with Match ID: \'', match_id, '\') has been updated.'));
+  CALL `log`('UPDATE', CONCAT('Match settlement for match with id: \'', match_id, '\') has been updated.'));
 
 END */;;
 DELIMITER ;
@@ -1344,7 +1346,7 @@ BEGIN
       join_password = team_j_pw
   WHERE t_id = team_id;
 
-  CALL `log`('UPDATE', CONCAT('Team \'', team_name, '\' (with ID: \'', team_id, '\') has been updated.'));
+  CALL `log`('UPDATE', CONCAT('Team \'', team_name, '\' (with id: \'', team_id, '\') has been updated.'));
 
 END */;;
 DELIMITER ;
@@ -1370,7 +1372,7 @@ BEGIN
       write_permission = user_write
   WHERE u_id = user_id AND t_id = team_id;
 
-  CALL `log`('UPDATE', CONCAT('User in team \'', user_in_team, '\' (with User ID: \'', user_id, '\' and Team ID: \'', team_id, '\') has been updated.'));
+  CALL `log`('UPDATE', CONCAT('user-in-team status for user with id \'', user_id, '\' in team with id \'', team_id, '\' has been updated.'));
 
 END */;;
 DELIMITER ;
@@ -1412,7 +1414,7 @@ BEGIN
     WHERE u_id = user_id;
   END IF;
 
-  CALL `log`('UPDATE', CONCAT('User Profile for user with ID: \'', user_id, '\') has been updated.'));
+  CALL `log`('UPDATE', CONCAT('User Profile for user with id: \'', user_id, '\') has been updated.'));
 
 END */;;
 DELIMITER ;
@@ -2777,6 +2779,8 @@ BEGIN
   INSERT INTO team_signed_up(t_id, l_id) VALUES (
   team_id,
   league_id);
+
+  CALL `log`('INSERT', CONCAT('Team with id \'', team_id, '\' joined league with id: \'', league_id, '\'.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2807,6 +2811,7 @@ BEGIN
     INSERT INTO user_in_team (u_id, t_id, tst_id) VALUES (user_id,
                                                           team_id,
                                                           4);
+    CALL `log`('INSERT', CONCAT('User with id \'', user_id, '\' joined team with id: \'', team_id, '\'.'));
   END IF;
 
 END */;;
@@ -2873,4 +2878,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2009-08-15  0:16:53
+-- Dump completed on 2009-08-15  2:49:42

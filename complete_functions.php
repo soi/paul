@@ -734,7 +734,7 @@
                 display_errors(202);
                 return true;   
             }   
-     
+            
             //all tests passed
             //glueing the sql update string together
             $sql = "edit_team('".$_POST['name']."',
@@ -778,14 +778,13 @@
                                                  ".$user_id.",
                                                  ".$_GET['team_id'].")";
                 $db->run($sql_update);
-                if ($db->error_result)
-                    display_errors(203);
-                else {
-                    display_success("edit_team", $_GET['team_id']);
-                    $smarty->assign('content', $smarty->fetch("succes.tpl"));
+                if ($db->error_result) {
+                    display_errors(1);
+                    return true;    
                 }
-            }      
-                       
+            }   
+            display_success("edit_team", $_GET['team_id']);
+            $smarty->assign('content', $smarty->fetch("succes.tpl"));
         }
         return true;
     }
