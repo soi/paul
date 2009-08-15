@@ -152,6 +152,38 @@
         }
     }
     
+    
+    /**
+     * Inserts a news if everything went right
+     *
+     * @access public
+     * @return true
+     */
+
+    function complete_add_news() {
+        if (valid_request(array(isset($_POST['title']), isset($_POST['text'])))) {
+
+            global $smarty;
+            global $db;
+            
+            if (strlen($_POST['title']) > 150 || strlen($_POST['title']) < 3) {
+                display_errors(800);
+                return true;
+            }
+
+            $sql = "add_news('".$_POST['title']."', 
+                             '".$_POST['text']."', 
+                              ".$_SESSION['user_id'].")";
+            $db->run($sql);
+            if ($db->error_result)
+                display_errors(1);
+            else {
+                display_success("add_news");
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));
+            }
+        }
+    }
+    
     /**
      * Checks an add season request and adds the season, division and matches if everything is alright
      *
@@ -700,6 +732,39 @@
                                 
         }
                                     
+     }
+     
+    /**
+     * Checks a edit newsa request and performs it if everything is ok
+     *
+     * @access public
+     * @return true
+     */
+     
+     function complete_edit_news() {
+        if (valid_request(array(isset($_GET['news_id']),
+                                isset($_POST['title']),
+                                isset($_POST['text'])))) {
+                                
+            global $smarty;
+            global $db;
+
+            if (strlen($_POST['title']) > 150 || strlen($_POST['title']) < 3) {
+                display_errors(800);
+                return true;
+            }
+
+            $sql = "edit_news(".$_GET['news_id'].",
+                             '".$_POST['title']."',
+                             '".$_POST['text']."')";
+            $db->run($sql);
+            if ($db->error_result)
+                display_errors(1);
+            else {
+                display_success("edit_news");
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));
+            }                        
+        }    
      }
     
     

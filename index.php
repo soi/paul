@@ -235,14 +235,18 @@
                 $area_admin = array('admin_menu', 
                                     'add_map',
                                     'add_map_to_league',
+                                    'add_news',
                                     'edit_game',
                                     'edit_league',
-                                    'edit_guid', 
+                                    'edit_guid',
+                                    'edit_news', 
                                     'complete_add_map',
                                     'complete_add_map_to_league',
+                                    'complete_add_news',
                                     'complete_edit_game',
                                     'complete_edit_league',
                                     'complete_edit_guid',
+                                    'complete_edit_news',
                                     'games_overview',
                                     'game_details',
                                     'guid_details',
@@ -337,6 +341,10 @@
                 case 'add_map_to_league' :
                     display_add_map_to_league();
                     break;
+                    
+                case 'add_news' :
+                    $smarty->assign('content', $smarty->fetch("add_news.tpl"));
+                    break;
                 
                 case 'add_season' :
                     display_add_season();
@@ -374,6 +382,10 @@
                     complete_add_map_to_league();
                     break;
                     
+                case 'complete_add_news' :
+                    complete_add_news();
+                    break;
+                    
                 case 'complete_add_season':
                     complete_add_season();
                     break;
@@ -408,6 +420,10 @@
                     
                 case 'complete_edit_match_settlement' :
                     complete_edit_match_settlement();
+                    break;
+                    
+                case 'complete_edit_news':
+                    complete_edit_news();
                     break;
                     
                 case 'complete_edit_team':
@@ -473,6 +489,10 @@
                     
                 case 'edit_match_settlement' :
                     display_edit_match_settlement();
+                    break;
+                    
+                case 'edit_news' :
+                    display_edit_news();
                     break;
                     
                 case 'edit_team':

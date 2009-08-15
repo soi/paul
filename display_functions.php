@@ -259,6 +259,24 @@
         return true;
     }
     
+    /**
+     * Assignes: $news_info
+     *
+     * @access public
+     * @return true
+     */
+
+    function display_edit_news() {
+
+        global $smarty;
+
+        if (valid_request(array(isset($_GET['news_id'])))) {
+            assign_news_info($_GET['news_id']);
+            $smarty->assign('content', $smarty->fetch("edit_news.tpl"));
+        }
+        return true;
+    }
+    
      
      /**
      * Almost Same like assign_user_profile
@@ -457,8 +475,8 @@
         global $smarty;
 
         if (valid_request(array(isset($_GET['league_id'])))) {
-            assign_league_info($_GET['league_id']);
-            assign_league_news($_GET['league_id']);
+            assign_league_info($_GET['league_id'], true);
+            //assign_league_news($_GET['league_id']);
             assign_league_seasons($_GET['league_id']);
             $smarty->assign('content', $smarty->fetch("league_details.tpl"));
         }
@@ -498,7 +516,7 @@
     
         global $smarty;
     
-        assign_news();
+        assign_news(true);
         $smarty->assign('content', $smarty->fetch("news.tpl"));
         return true;
     }
@@ -568,7 +586,7 @@
         global $smarty;
 
         if (isset($_GET['team_id'])) {
-            assign_team_info($_GET['team_id']);
+            assign_team_info($_GET['team_id'], true);
             assign_team_players($_GET['team_id']);
             assign_team_divisions($_GET['team_id']);
             $smarty->assign('content', $smarty->fetch("team.tpl"));
@@ -611,7 +629,7 @@
         global $smarty;
 
         if (isset($_GET['user_id'])) {
-            assign_user_info($_GET['user_id']);
+            assign_user_info($_GET['user_id'], true);
             assign_user_teams($_GET['user_id']);
             assign_user_guids($_GET['user_id']);
             $smarty->assign('content', $smarty->fetch("user.tpl"));

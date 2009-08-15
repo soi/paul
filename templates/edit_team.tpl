@@ -3,8 +3,6 @@
     <input type="text" name="name" size="29" value="{$team_info.name}"/><br /> <br />
     <h5 id="login_subhl">Shorthandle</h4>
     <input type="text" name="shorthandle" size="29" value="{$team_info.shorthandle}"/><br /> <br />
-    <h5 id="login_subhl">Description</h4>
-    <textarea name="description">{$team_info.description}</textarea>
     <h5 id="login_subhl">Join Password</h4>
     <input type="text" name="join_password" size="29" value="{$team_info.join_password}"/><br /> <br />
     <table border="0">
@@ -32,6 +30,10 @@
             
         {/foreach}
     </table>
+    
+    <h5 id="login_subhl">Description</h4>
+    <script>edToolbar('desc'); </script>
+    <textarea name="description" id="desc" class="ed">{$team_info.description}</textarea> <br />
     
     <input type="submit" value="Edit" size="15"/>
 

@@ -242,16 +242,22 @@
      * @return true
     */
 
-    function assign_league_info($league_id) {
+    function assign_league_info($league_id, $parse_bb = false) {
         
         global $smarty;
         global $db;
 
         $sql = "get_league_info(".$league_id.")";
-        
         $db->run($sql);
-        $smarty->assign('league_info', $db->get_result_row());
         
+        if ($parse_bb) {
+            $info = $db->get_result_row();
+            $info['description'] = parse_bb_code($info['description']);
+            $smarty->assign('league_info', $info);
+        }
+        else {
+           $smarty->assign('league_info', $db->get_result_row());
+        }
         return true;
     }
     
@@ -292,18 +298,18 @@
      * @return true
     */
 
-    function assign_league_news($league_id) {
-
-        global $smarty;
-        global $db;
-
-        $sql = "get_league_news(".$league_id.")"; //@todo news archive, letzte news anzeigen etc.
-        
-        $db->run($sql);
-        $smarty->assign('league_news', $db->get_result_array());
-        
-        return true;
-    }
+    //function assign_league_news($league_id) {
+//
+        //global $smarty;
+        //global $db;
+//
+        //$sql = "get_league_news(".$league_id.")"; //@todo news archive, letzte news anzeigen etc.
+        //
+        //$db->run($sql);
+        //$smarty->assign('league_news', $db->get_result_array());
+        //
+        //return true;
+    //}
     
     
     /**
@@ -472,17 +478,43 @@
      * @return true
     */
 
-    function assign_news() {
+    function assign_news($parse_bb = false) {
     
         global $smarty;
         global $db;
 
         $sql = "get_news()";
         $db->run($sql);
-
-        //putting the news arrays into one master array
-        $smarty->assign('news', $db->get_result_array());
         
+        if ($parse_bb) {
+            $news = $db->get_result_array();
+            foreach ($news as $key => $news_arr) {
+                $news[$key]['text'] = parse_bb_code($news[$key]['text']);
+            }
+            $smarty->assign('news', $news);  
+        }
+        else {
+            $smarty->assign('news', $db->get_result_array());
+        }
+        return true;
+    }
+    
+    
+    /**
+     * Assignes $news_info
+     * @access public
+     * @return true
+    */
+
+    function assign_news_info($news_id) {
+
+        global $smarty;
+        global $db;
+
+        $sql = "get_news_info(".$news_id.")";
+        $db->run($sql);
+
+        $smarty->assign('news_info', $db->get_result_row());
         return true;
     }
     
@@ -587,16 +619,23 @@
      * @return true
     */
 
-    function assign_team_info($team_id) {
+    function assign_team_info($team_id, $parse_bb = false) {
 
         global $smarty;
         global $db;
 
         //get the team info except the players
         $sql = "get_team_info(".$team_id.");";
-
         $db->run($sql);
-        $smarty->assign('team_info', $db->get_result_row());
+        
+        if ($parse_bb) {
+            $info = $db->get_result_row();
+            $info['description'] = parse_bb_code($info['description']);
+            $smarty->assign('team_info', $info);
+        }
+        else {
+            $smarty->assign('team_info', $db->get_result_row());
+        }
         return true;
     }
     
@@ -765,7 +804,7 @@
      * @return true
     */
 
-    function assign_user_info($user_id) {
+    function assign_user_info($user_id, $parse_bb = false) {
 
         global $smarty;
         global $db;
@@ -773,9 +812,15 @@
         //get the general player info
         $sql = "get_user_info(".$user_id.");";   // @ todo possibility to decide if e-mail can be displayed
         $db->run($sql);
-
-        $smarty->assign('user_info', $db->get_result_row());
         
+        if ($parse_bb) {
+            $info = $db->get_result_row();
+            $info['description'] = parse_bb_code($info['description']);
+            $smarty->assign('user_info', $info);    
+        }
+        else {
+            $smarty->assign('user_info', $info = $db->get_result_row());        
+        }        
         return true;
     }
     
@@ -854,6 +899,23 @@
             $smarty->assign('visitor_info', $user);
             return false;
         }
+     }
+     
+    /**
+     * Parses BBcode using classes/LightBBCodeParser.php
+     *
+     * @param the text to be parsed
+     * @return the parsed text
+     */
+     
+     function parse_bb_code($bbtext) {
+         require_once(CLASS_PATH.'class.bbcodeparser.php');
+         
+         $parser = new bbcodeparser();
+         $htmltext = $parser->parse($bbtext);
+
+         unset($parser);
+         return $htmltext;
      }
 
    

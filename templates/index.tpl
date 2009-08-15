@@ -1,6 +1,8 @@
 <html>
     <head>
-    <link rel="stylesheet" type="text/css" href="stylesheets/general.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+        <script type="text/javascript" src="bbeditor/ed.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheets/general.css" />
     </head>
     <body>
         <div id="maincenter" align="center">

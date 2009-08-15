@@ -31,7 +31,8 @@
     <input type="checkbox" name="in_sign_up" {if $league_info.in_sign_up == 1} checked {/if}/>
     <br />
     <h5 id="login_subhl">Description</h4>
-    <textarea name="description">{$league_info.description}</textarea>
+    <script>edToolbar('desc'); </script>
+    <textarea name="description" id="desc" class="ed">{$league_info.description}</textarea> <br />
     <br />
     <input type="submit" value="edit"/>
 </form>

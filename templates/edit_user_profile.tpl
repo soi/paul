@@ -256,7 +256,9 @@
         <option value="Zambia">Zambia</option>
         <option value="Zimbabwe">Zimbabwe</option>
     </select> <br />
-    <textarea name="description">{$user_info.description}</textarea> <br />
+    <h5>Description</h5>
+    <script>edToolbar('desc'); </script>
+    <textarea name="description" id="desc" class="ed">{$user_info.description}</textarea> <br />
     <input type="submit" value="Complete" size="15"/>
 </form>
 
