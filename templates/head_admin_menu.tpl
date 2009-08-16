@@ -1,3 +1,5 @@
+<a href="index.php?site=add_admin">Add Admin</a> <br />
+<a href="index.php?site=add_head_admin">Add Head Admin</a> <br />
 <a href="index.php?site=add_game">Add Game</a> <br />
 <a href="index.php?site=add_league">Add League</a> <br />
 <a href="index.php?site=add_guid">Add GUID</a> <br />

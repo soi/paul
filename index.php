@@ -258,11 +258,15 @@
                                              'add_league', 
                                              'add_game', 
                                              'add_guid',
-                                             'add_season',  
+                                             'add_season',
+                                             'add_admin', 
+                                             'add_head_admin',  
                                              'complete_add_game', 
                                              'complete_add_league', 
                                              'complete_add_guid',                                              
-                                             'complete_add_season'); 
+                                             'complete_add_season', 
+                                             'complete_add_admin',
+                                             'complete_add_head_admin'); 
                     $perm_sites = array_merge($perm_sites, $area_head_admin);    
                 }    
             }               
@@ -320,7 +324,11 @@
         //has the user permission to visit the site? 
         $perm_sites = get_permitted_sites();
         if (in_array($_GET['site'], $perm_sites)) {
-            switch ($_GET['site']) {    
+            switch ($_GET['site']) { 
+               
+                case 'add_admin' :
+                    $smarty->assign('content', $smarty->fetch("add_admin.tpl"));
+                    break;
             
                 case 'add_game' :
                     display_add_game();
@@ -328,6 +336,10 @@
                 
                 case 'add_guid' :
                     $smarty->assign('content', $smarty->fetch("add_guid.tpl"));
+                    break;
+                    
+                case 'add_head_admin' :
+                    display_add_head_admin();
                     break;
                     
                 case 'add_league' :
@@ -362,6 +374,10 @@
                     display_admin_menu();
                     break; 
                     
+                case 'complete_add_admin':
+                    complete_add_admin();
+                    break;
+                    
                 case 'complete_add_league':
                     complete_add_league();
                     break;
@@ -372,6 +388,10 @@
 
                 case 'complete_add_guid':
                     complete_add_guid();
+                    break;
+                    
+                case 'complete_add_head_admin':
+                    complete_add_head_admin();
                     break;
                     
                 case 'complete_add_map':

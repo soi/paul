@@ -5,6 +5,26 @@
     //|----------------------------------------------------|
     
     /**
+     * Assignes the $admins template variable
+     *
+     * @access public
+     * @param $division_id related id
+     * @return true
+    */
+
+    function assign_admins() {
+
+        global $smarty;
+        global $db;
+
+        $sql = "get_admins()";
+        $db->run($sql);
+
+        $smarty->assign('admins', $db->get_result_array());
+        return true;
+    }
+    
+    /**
      * Assignes the $division_info template variable with the information about one division
      *
      * @access public

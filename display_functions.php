@@ -23,6 +23,22 @@
         $smarty->assign('content', $smarty->fetch("add_game.tpl"));
         return true;
      }
+     
+    /**
+     * Assignes: $admins
+     *
+     * @access public
+     * @return boolean true
+     */
+
+     function display_add_head_admin() {
+
+        global $smarty;
+
+        assign_admins();
+        $smarty->assign('content', $smarty->fetch("add_head_admin.tpl"));
+        return true;
+     }
 
      /**
      * Assignes: $games

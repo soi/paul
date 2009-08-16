@@ -2,6 +2,31 @@
     // @todo all regex as define's
     
     /**
+     * Makes someone admin
+     *
+     * @access public
+     * @return true
+     */
+
+    function complete_add_admin() {
+        if (valid_request(array(isset($_POST['user_id'])))) {
+
+            global $db;
+            global $smarty;
+
+            $sql = "add_admin(".$_POST['user_id'].")";
+            $db->run($sql);
+            if ($db->error_result)
+                display_errors(850);
+            else {
+                display_success("add_admin");
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));
+            }
+        }
+        return true;
+    }
+    
+    /**
      * Checks if a game that is about to be inserted already exists
      * if not it is inserted
      *
@@ -58,6 +83,31 @@
                 display_errors(400);
             else {
                 display_success("add_guid");                              
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * Makes someone head admin
+     *
+     * @access public
+     * @return true
+     */
+
+    function complete_add_head_admin() {
+        if (valid_request(array(isset($_POST['user_id'])))) {
+
+            global $db;
+            global $smarty;
+
+            $sql = "add_head_admin(".$_POST['user_id'].")";
+            $db->run($sql);
+            if ($db->error_result)
+                display_errors(851);
+            else {
+                display_success("add_head_admin");
                 $smarty->assign('content', $smarty->fetch("succes.tpl"));
             }
         }
