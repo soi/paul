@@ -21,7 +21,7 @@ class mysql_connection {
     
     function run($proc) {
         // test if there are still results to kill
-        if (get_class($this->result) == 'mysqli_result') 
+        if (($this->result) && (get_class($this->result) == 'mysqli_result')) 
             $this->close();
         
         // run the proc

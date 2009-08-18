@@ -234,6 +234,38 @@
         }
     }
     
+    
+    /**
+     * Inserts a pm if everything went right
+     *
+     * @access public
+     * @return true
+     */
+
+    function complete_add_pm() {
+        if (valid_request(array(isset($_GET['to']), isset($_POST['message'])))) {
+
+            global $smarty;
+            global $db;
+
+            if (strlen($_POST['message']) > 255 || strlen($_POST['message']) < 1) {
+                display_errors(901);
+                return true;
+            }
+
+            $sql = "add_pm(".$_GET['to'].",
+                           ".$_SESSION['user_id'].",
+                           '".$_POST['message']."')";
+            $db->run($sql);
+            if ($db->error_result)
+                display_errors(1);
+            else {
+                display_success("add_pm");
+                $smarty->assign('content', $smarty->fetch("succes.tpl"));
+            }
+        }
+    }
+    
     /**
      * Checks an add season request and adds the season, division and matches if everything is alright
      *

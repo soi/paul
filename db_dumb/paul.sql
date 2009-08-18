@@ -237,7 +237,7 @@ CREATE TABLE `logging` (
   `method` char(6) NOT NULL,
   `message` char(255) NOT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +246,7 @@ CREATE TABLE `logging` (
 
 LOCK TABLES `logging` WRITE;
 /*!40000 ALTER TABLE `logging` DISABLE KEYS */;
-INSERT INTO `logging` VALUES (1,'2009-08-02 15:03:17','sd','sf'),(2,'2009-08-02 15:06:02','INSERT','game with namelog_testex has been created'),(3,'2009-08-02 15:20:01','INSERT','game with nametoc has been inserted'),(4,'2009-08-02 15:22:53','INSERT','Game with name log_test_1 (id: 20) has been inserted.'),(5,'2009-08-02 15:23:53','INSERT','Game with name \'log_test_2\' (id: 22) has been inserted.'),(6,'2009-08-02 15:29:53','INSERT','Game with name sudoku (id: 23) has been inserted.'),(7,'2009-08-02 15:40:29','INSERT','New Guid riper (with id: 13) has been inserted.'),(8,'2009-08-02 15:46:50','INSERT','New Guid \'riper2\' (with id: 15) has been inserted.'),(9,'2009-08-02 22:20:37','INSERT','New League \'liga1with game_id \'1\' (with id: 8) has been inserted.'),(10,'2009-08-02 22:26:34','INSERT','New League \'liga2\'with Game ID \'2\' (with id: 9) has been inserted.'),(11,'2009-08-02 22:27:24','INSERT','New League \'liga3\' with Game ID \'3\' (with id: 10) has been inserted.'),(12,'2009-08-02 22:29:24','INSERT','Map with name \'Blister\' (id: 5) has been inserted.'),(13,'2009-08-02 22:32:20','INSERT','Game with name \'tetris\' (with id: 24) has been inserted.'),(14,'2009-08-02 22:33:21','INSERT','Map with name \'map1\' (with id: 6) has been inserted.'),(15,'2009-08-08 15:15:48','INSERT','Game with name \'testgame\' (with id: 28) has been inserted.'),(16,'2009-08-08 15:16:05','INSERT','Game with name \'testgame2\' (with id: 30) has been inserted.'),(17,'2009-08-08 15:36:09','INSERT','Team with name \'team222\' (with id: 158) has been inserted.'),(18,'2009-08-08 15:47:50','INSERT','New League \'Liga22\' (with id: 11) with Game ID \'2\' has been inserted.'),(19,'2009-08-08 15:57:20','INSERT','Team with team_id \'1\' (with id: 345) with div_id \'1\' has been inserted.'),(20,'2009-08-08 15:57:36','INSERT','Team with team_id \'1\' (with id: 346) with div_id \'2\' has been inserted.'),(21,'2009-08-08 15:58:11','INSERT','Team with team_id \'2\' (with id: 349) with div_id \'2\' has been inserted.'),(22,'2009-08-08 15:58:41','INSERT','Team with team_id \'1\' (with id: 350) with div_id \'1\' has been inserted.'),(23,'2009-08-08 16:06:29','INSERT','Team with team_id \'1\' (with id: 353) with div_id \'1\' has been inserted into table \"team_in_division\".'),(24,'2009-08-08 16:18:05','INSERT','New User \'last1\' (with id: 15) with last name \'last1\' with first name \'first1\' has been inserted.'),(25,'2009-08-08 16:28:08','INSERT','New guid_id \'2\' (with id: 9) for User ID \'2\' has been inserted.'),(26,'2009-08-08 16:32:32','INSERT','New GUID ID \'2\' (with id: 10) for User ID \'2\' has been inserted.'),(27,'2009-08-08 18:59:52','UPDATE','Game \'gamename1\' (with Game ID: 1) has been updated.'),(28,'2009-08-08 19:02:46','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(29,'2009-08-08 19:03:52','UPDATE','Game \'gamename1\' with Game ID: \'1\' has been updated.'),(30,'2009-08-08 19:05:14','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(31,'2009-08-08 19:20:59','DELETE','All signed up teams have been deleted from the League with ID \'1\'.'),(32,'2009-08-08 19:24:42','UPDATE','Guid \'bla\' (with Guid ID: \'1\') has been updated.'),(33,'2009-08-08 19:26:43','UPDATE','Guid \'bla\' (with ID: \'1\') has been updated.'),(34,'2009-08-08 19:31:20','UPDATE','League \'bla\' (with ID: \'1\') has been updated.'),(35,'2009-08-08 19:55:42','UPDATE','Match Settlement (with ID: \'1\') has been updated.'),(36,'2009-08-08 20:02:12','UPDATE','User Profile for user with ID: \'1\') has been updated.'),(37,'2009-08-08 20:22:45','SELECT','Admin information about user with ID: \'1\') has been selected.'),(38,'2009-08-08 20:45:27','SELECT','Information about division from league with ID: \'1\') has been selected.'),(39,'2009-08-08 22:17:10','INSERT','Match (id: 1377) of division with id \'1 and matchday 1 has been inserted.'),(40,'2009-08-08 22:17:28','INSERT','Match (id: 1378) of division with id \'1 and matchday 1 has been inserted.'),(41,'2009-08-08 22:18:06','INSERT','Match (id: 1379) of division with id \'1 and matchday 1 has been inserted.'),(42,'2009-08-08 22:18:06','INSERT','Match settlement (id: 2) of match with id \'1379 has been inserted.'),(43,'2009-08-09 00:43:28','SELECT','Admin information about user with ID: \'12\') has been selected.'),(44,'2009-08-09 01:30:26','SELECT','Admin information about user with ID: \'14\') has been selected.'),(45,'2009-08-09 02:44:10','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(46,'2009-08-09 02:44:43','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(47,'2009-08-09 02:45:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(48,'2009-08-09 02:50:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(49,'2009-08-09 02:51:19','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(50,'2009-08-09 02:51:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(51,'2009-08-09 02:53:02','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(52,'2009-08-09 02:54:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(53,'2009-08-09 02:57:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(54,'2009-08-09 02:57:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(55,'2009-08-09 03:05:39','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(56,'2009-08-09 03:05:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(57,'2009-08-09 03:06:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(58,'2009-08-09 03:07:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(59,'2009-08-09 03:13:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(60,'2009-08-09 03:13:52','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(61,'2009-08-09 03:14:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(62,'2009-08-09 03:18:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(63,'2009-08-09 03:19:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(64,'2009-08-09 03:20:15','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(65,'2009-08-09 03:21:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(66,'2009-08-09 03:21:51','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(67,'2009-08-09 03:22:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(68,'2009-08-09 03:22:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(69,'2009-08-09 03:23:06','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(70,'2009-08-09 03:23:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(71,'2009-08-09 03:23:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(72,'2009-08-09 03:24:24','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(73,'2009-08-09 03:25:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(74,'2009-08-09 03:25:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(75,'2009-08-09 03:30:43','SELECT','Admin information about user with ID: \'12\') has been selected.'),(76,'2009-08-09 03:31:17','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(77,'2009-08-09 03:31:38','SELECT','Admin information about user with ID: \'2\') has been selected.'),(78,'2009-08-09 03:32:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(79,'2009-08-09 03:33:41','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(80,'2009-08-09 03:33:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(81,'2009-08-09 22:02:17','INSERT','Match (id: 1380) of division with id \'1 and matchday 1 has been inserted.'),(82,'2009-08-09 22:02:52','INSERT','Match (id: 1381) of division with id \'1 and matchday 1 has been inserted.'),(83,'2009-08-09 22:03:36','INSERT','Match (id: 1382) of division with id \'1 and matchday 1 has been inserted.'),(84,'2009-08-10 02:06:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(85,'2009-08-10 02:06:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(86,'2009-08-10 02:07:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(87,'2009-08-10 02:07:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(88,'2009-08-10 02:11:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(89,'2009-08-10 02:11:38','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(90,'2009-08-10 02:12:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(91,'2009-08-10 02:12:53','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(92,'2009-08-10 02:13:12','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(93,'2009-08-10 02:13:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(94,'2009-08-12 16:03:45','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(95,'2009-08-12 16:28:20','SELECT','Admin information about user with ID: \'2\') has been selected.'),(96,'2009-08-12 16:31:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(97,'2009-08-12 16:51:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(98,'2009-08-12 16:52:18','SELECT','Admin information about user with ID: \'12\') has been selected.'),(99,'2009-08-12 16:52:31','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(100,'2009-08-12 17:06:23','SELECT','Admin information about user with ID: \'2\') has been selected.'),(101,'2009-08-12 17:06:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(102,'2009-08-12 20:25:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(103,'2009-08-12 20:28:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(104,'2009-08-12 20:28:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(105,'2009-08-12 20:28:49','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(106,'2009-08-14 03:24:41','SELECT','Admin information about user with ID: \'3\') has been selected.'),(107,'2009-08-14 03:25:03','SELECT','Admin information about user with ID: \'4\') has been selected.'),(108,'2009-08-14 03:25:24','SELECT','Admin information about user with ID: \'5\') has been selected.'),(109,'2009-08-14 03:25:41','SELECT','Admin information about user with ID: \'14\') has been selected.'),(110,'2009-08-15 00:24:58','SELECT','Admin information about user with ID: \'4\') has been selected.'),(111,'2009-08-15 00:26:01','SELECT','Admin information about user with ID: \'4\') has been selected.'),(112,'2009-08-15 00:28:20','INSERT','Team with name \'moep\' (with id: 160) has been inserted.'),(113,'2009-08-15 00:29:26','SELECT','Admin information about user with ID: \'2\') has been selected.'),(114,'2009-08-15 00:40:31','UPDATE','Game \'FAR CRY 2\' (with ID: \'7\') has been updated.'),(115,'2009-08-15 00:40:40','UPDATE','Guid \'name1\' (with ID: \'12\') has been updated.'),(116,'2009-08-15 00:40:54','INSERT','Map with name \'rotzmap\' (with id: 7) has been inserted.'),(117,'2009-08-15 00:41:15','UPDATE','Game \'testgame\' (with ID: \'28\') has been updated.'),(118,'2009-08-15 01:23:27','SELECT','Admin information about user with ID: \'4\') has been selected.'),(119,'2009-08-15 01:23:38','SELECT','Admin information about user with ID: \'4\') has been selected.'),(120,'2009-08-15 01:23:44','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(121,'2009-08-15 01:24:00','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(122,'2009-08-15 01:24:32','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(123,'2009-08-15 01:24:47','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(124,'2009-08-15 01:24:59','SELECT','Admin information about user with ID: \'2\') has been selected.'),(125,'2009-08-15 01:25:03','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(126,'2009-08-15 01:25:17','UPDATE','Team \'team61\' (with ID: \'105\') has been updated.'),(127,'2009-08-15 01:25:18','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(128,'2009-08-15 01:25:49','UPDATE','User Profile for user with ID: \'2\') has been updated.'),(129,'2009-08-15 01:26:04','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(130,'2009-08-15 01:26:14','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(131,'2009-08-15 01:26:26','UPDATE','Team \'team62\' (with ID: \'106\') has been updated.'),(132,'2009-08-15 01:26:33','UPDATE','Team \'team62\' (with ID: \'106\') has been updated.'),(133,'2009-08-15 01:26:55','SELECT','Admin information about user with ID: \'4\') has been selected.'),(134,'2009-08-15 01:26:57','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(135,'2009-08-15 01:27:13','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(136,'2009-08-15 01:27:25','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(137,'2009-08-15 01:30:47','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(138,'2009-08-15 01:30:54','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(139,'2009-08-15 01:31:17','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(140,'2009-08-15 01:31:47','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(141,'2009-08-15 01:32:06','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(142,'2009-08-15 01:32:13','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(143,'2009-08-15 01:35:09','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(144,'2009-08-15 01:35:36','SELECT','Admin information about user with ID: \'2\') has been selected.'),(145,'2009-08-15 01:35:42','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(146,'2009-08-15 01:37:18','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(147,'2009-08-15 01:37:28','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(148,'2009-08-15 01:39:36','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(149,'2009-08-15 02:35:38','INSERT','Team with name \'hdgfthrhntzn\' (with id: 161) has been inserted.'),(150,'2009-08-15 02:35:45','INSERT','Team with name \'rtttt\' (with id: 162) has been inserted.'),(151,'2009-08-15 02:47:51','UPDATE','User Profile for user with id: \'2\') has been updated.'),(152,'2009-08-15 02:47:56','UPDATE','Team \'stargamerztu\' (with id: \'1\') has been updated.'),(153,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'2\' in team with id \'1\' has been updated.'),(154,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'4\' in team with id \'1\' has been updated.'),(155,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'5\' in team with id \'1\' has been updated.'),(156,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'11\' in team with id \'1\' has been updated.'),(157,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'3\' in team with id \'1\' has been updated.'),(158,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'12\' in team with id \'1\' has been updated.'),(159,'2009-08-15 18:20:00','UPDATE','User Profile for user with id: \'2\') has been updated.'),(160,'2009-08-15 18:21:20','UPDATE','User Profile for user with id: \'2\') has been updated.'),(161,'2009-08-15 18:23:41','UPDATE','User Profile for user with id: \'2\') has been updated.'),(162,'2009-08-15 18:36:57','UPDATE','User Profile for user with id: \'2\') has been updated.'),(163,'2009-08-15 18:37:11','UPDATE','User Profile for user with id: \'2\') has been updated.'),(164,'2009-08-15 21:10:26','UPDATE','User Profile for user with id: \'2\') has been updated.'),(165,'2009-08-15 21:25:42','UPDATE','Team \'stargamerztu\' (with id: \'1\') has been updated.'),(166,'2009-08-15 21:25:42','UPDATE','user-in-team status for user with id \'2\' in team with id \'1\' has been updated.'),(167,'2009-08-15 21:25:42','UPDATE','user-in-team status for user with id \'4\' in team with id \'1\' has been updated.'),(168,'2009-08-15 21:25:42','UPDATE','user-in-team status for user with id \'5\' in team with id \'1\' has been updated.'),(169,'2009-08-15 21:25:43','UPDATE','user-in-team status for user with id \'11\' in team with id \'1\' has been updated.'),(170,'2009-08-15 21:25:43','UPDATE','user-in-team status for user with id \'3\' in team with id \'1\' has been updated.'),(171,'2009-08-15 21:25:43','UPDATE','user-in-team status for user with id \'12\' in team with id \'1\' has been updated.'),(172,'2009-08-15 21:59:54','INSERT','News with title: \'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\' has been added by user with id: \'2\''),(173,'2009-08-15 22:13:20','INSERT','News with title: \'my first real news\' has been added by user with id: \'2\'.'),(174,'2009-08-15 23:47:33','SELECT','Admin information about user with ID: \'2\') has been selected.'),(175,'2009-08-15 23:54:37','INSERT','News with title: \'abc\' has been edited.'),(176,'2009-08-15 23:55:06','INSERT','News with title: \'abc\' has been edited.'),(177,'2009-08-16 00:33:28','INSERT','News with title: \'abc\' has been edited.'),(178,'2009-08-16 00:41:34','INSERT','News with title: \'abc\' has been edited.'),(179,'2009-08-16 00:41:49','INSERT','News with title: \'abc\' has been edited.'),(180,'2009-08-16 19:05:22','INSERT','User with id \'9 is now admin.'),(181,'2009-08-16 19:05:33','INSERT','User with id \'3 is now head admin.');
+INSERT INTO `logging` VALUES (1,'2009-08-02 15:03:17','sd','sf'),(2,'2009-08-02 15:06:02','INSERT','game with namelog_testex has been created'),(3,'2009-08-02 15:20:01','INSERT','game with nametoc has been inserted'),(4,'2009-08-02 15:22:53','INSERT','Game with name log_test_1 (id: 20) has been inserted.'),(5,'2009-08-02 15:23:53','INSERT','Game with name \'log_test_2\' (id: 22) has been inserted.'),(6,'2009-08-02 15:29:53','INSERT','Game with name sudoku (id: 23) has been inserted.'),(7,'2009-08-02 15:40:29','INSERT','New Guid riper (with id: 13) has been inserted.'),(8,'2009-08-02 15:46:50','INSERT','New Guid \'riper2\' (with id: 15) has been inserted.'),(9,'2009-08-02 22:20:37','INSERT','New League \'liga1with game_id \'1\' (with id: 8) has been inserted.'),(10,'2009-08-02 22:26:34','INSERT','New League \'liga2\'with Game ID \'2\' (with id: 9) has been inserted.'),(11,'2009-08-02 22:27:24','INSERT','New League \'liga3\' with Game ID \'3\' (with id: 10) has been inserted.'),(12,'2009-08-02 22:29:24','INSERT','Map with name \'Blister\' (id: 5) has been inserted.'),(13,'2009-08-02 22:32:20','INSERT','Game with name \'tetris\' (with id: 24) has been inserted.'),(14,'2009-08-02 22:33:21','INSERT','Map with name \'map1\' (with id: 6) has been inserted.'),(15,'2009-08-08 15:15:48','INSERT','Game with name \'testgame\' (with id: 28) has been inserted.'),(16,'2009-08-08 15:16:05','INSERT','Game with name \'testgame2\' (with id: 30) has been inserted.'),(17,'2009-08-08 15:36:09','INSERT','Team with name \'team222\' (with id: 158) has been inserted.'),(18,'2009-08-08 15:47:50','INSERT','New League \'Liga22\' (with id: 11) with Game ID \'2\' has been inserted.'),(19,'2009-08-08 15:57:20','INSERT','Team with team_id \'1\' (with id: 345) with div_id \'1\' has been inserted.'),(20,'2009-08-08 15:57:36','INSERT','Team with team_id \'1\' (with id: 346) with div_id \'2\' has been inserted.'),(21,'2009-08-08 15:58:11','INSERT','Team with team_id \'2\' (with id: 349) with div_id \'2\' has been inserted.'),(22,'2009-08-08 15:58:41','INSERT','Team with team_id \'1\' (with id: 350) with div_id \'1\' has been inserted.'),(23,'2009-08-08 16:06:29','INSERT','Team with team_id \'1\' (with id: 353) with div_id \'1\' has been inserted into table \"team_in_division\".'),(24,'2009-08-08 16:18:05','INSERT','New User \'last1\' (with id: 15) with last name \'last1\' with first name \'first1\' has been inserted.'),(25,'2009-08-08 16:28:08','INSERT','New guid_id \'2\' (with id: 9) for User ID \'2\' has been inserted.'),(26,'2009-08-08 16:32:32','INSERT','New GUID ID \'2\' (with id: 10) for User ID \'2\' has been inserted.'),(27,'2009-08-08 18:59:52','UPDATE','Game \'gamename1\' (with Game ID: 1) has been updated.'),(28,'2009-08-08 19:02:46','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(29,'2009-08-08 19:03:52','UPDATE','Game \'gamename1\' with Game ID: \'1\' has been updated.'),(30,'2009-08-08 19:05:14','UPDATE','Game \'gamename1\' (with Game ID: \'1\') has been updated.'),(31,'2009-08-08 19:20:59','DELETE','All signed up teams have been deleted from the League with ID \'1\'.'),(32,'2009-08-08 19:24:42','UPDATE','Guid \'bla\' (with Guid ID: \'1\') has been updated.'),(33,'2009-08-08 19:26:43','UPDATE','Guid \'bla\' (with ID: \'1\') has been updated.'),(34,'2009-08-08 19:31:20','UPDATE','League \'bla\' (with ID: \'1\') has been updated.'),(35,'2009-08-08 19:55:42','UPDATE','Match Settlement (with ID: \'1\') has been updated.'),(36,'2009-08-08 20:02:12','UPDATE','User Profile for user with ID: \'1\') has been updated.'),(37,'2009-08-08 20:22:45','SELECT','Admin information about user with ID: \'1\') has been selected.'),(38,'2009-08-08 20:45:27','SELECT','Information about division from league with ID: \'1\') has been selected.'),(39,'2009-08-08 22:17:10','INSERT','Match (id: 1377) of division with id \'1 and matchday 1 has been inserted.'),(40,'2009-08-08 22:17:28','INSERT','Match (id: 1378) of division with id \'1 and matchday 1 has been inserted.'),(41,'2009-08-08 22:18:06','INSERT','Match (id: 1379) of division with id \'1 and matchday 1 has been inserted.'),(42,'2009-08-08 22:18:06','INSERT','Match settlement (id: 2) of match with id \'1379 has been inserted.'),(43,'2009-08-09 00:43:28','SELECT','Admin information about user with ID: \'12\') has been selected.'),(44,'2009-08-09 01:30:26','SELECT','Admin information about user with ID: \'14\') has been selected.'),(45,'2009-08-09 02:44:10','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(46,'2009-08-09 02:44:43','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(47,'2009-08-09 02:45:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(48,'2009-08-09 02:50:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(49,'2009-08-09 02:51:19','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(50,'2009-08-09 02:51:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(51,'2009-08-09 02:53:02','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(52,'2009-08-09 02:54:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(53,'2009-08-09 02:57:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(54,'2009-08-09 02:57:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(55,'2009-08-09 03:05:39','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(56,'2009-08-09 03:05:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(57,'2009-08-09 03:06:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(58,'2009-08-09 03:07:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(59,'2009-08-09 03:13:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(60,'2009-08-09 03:13:52','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(61,'2009-08-09 03:14:13','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(62,'2009-08-09 03:18:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(63,'2009-08-09 03:19:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(64,'2009-08-09 03:20:15','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(65,'2009-08-09 03:21:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(66,'2009-08-09 03:21:51','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(67,'2009-08-09 03:22:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(68,'2009-08-09 03:22:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(69,'2009-08-09 03:23:06','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(70,'2009-08-09 03:23:14','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(71,'2009-08-09 03:23:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(72,'2009-08-09 03:24:24','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(73,'2009-08-09 03:25:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(74,'2009-08-09 03:25:50','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(75,'2009-08-09 03:30:43','SELECT','Admin information about user with ID: \'12\') has been selected.'),(76,'2009-08-09 03:31:17','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(77,'2009-08-09 03:31:38','SELECT','Admin information about user with ID: \'2\') has been selected.'),(78,'2009-08-09 03:32:05','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(79,'2009-08-09 03:33:41','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(80,'2009-08-09 03:33:54','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(81,'2009-08-09 22:02:17','INSERT','Match (id: 1380) of division with id \'1 and matchday 1 has been inserted.'),(82,'2009-08-09 22:02:52','INSERT','Match (id: 1381) of division with id \'1 and matchday 1 has been inserted.'),(83,'2009-08-09 22:03:36','INSERT','Match (id: 1382) of division with id \'1 and matchday 1 has been inserted.'),(84,'2009-08-10 02:06:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(85,'2009-08-10 02:06:29','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(86,'2009-08-10 02:07:23','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(87,'2009-08-10 02:07:44','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(88,'2009-08-10 02:11:11','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(89,'2009-08-10 02:11:38','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(90,'2009-08-10 02:12:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(91,'2009-08-10 02:12:53','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(92,'2009-08-10 02:13:12','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(93,'2009-08-10 02:13:18','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(94,'2009-08-12 16:03:45','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(95,'2009-08-12 16:28:20','SELECT','Admin information about user with ID: \'2\') has been selected.'),(96,'2009-08-12 16:31:21','SELECT','Admin information about user with ID: \'14\') has been selected.'),(97,'2009-08-12 16:51:59','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(98,'2009-08-12 16:52:18','SELECT','Admin information about user with ID: \'12\') has been selected.'),(99,'2009-08-12 16:52:31','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(100,'2009-08-12 17:06:23','SELECT','Admin information about user with ID: \'2\') has been selected.'),(101,'2009-08-12 17:06:34','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(102,'2009-08-12 20:25:57','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(103,'2009-08-12 20:28:30','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(104,'2009-08-12 20:28:40','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(105,'2009-08-12 20:28:49','UPDATE','Match Settlement (with Match ID: \'4\') has been updated.'),(106,'2009-08-14 03:24:41','SELECT','Admin information about user with ID: \'3\') has been selected.'),(107,'2009-08-14 03:25:03','SELECT','Admin information about user with ID: \'4\') has been selected.'),(108,'2009-08-14 03:25:24','SELECT','Admin information about user with ID: \'5\') has been selected.'),(109,'2009-08-14 03:25:41','SELECT','Admin information about user with ID: \'14\') has been selected.'),(110,'2009-08-15 00:24:58','SELECT','Admin information about user with ID: \'4\') has been selected.'),(111,'2009-08-15 00:26:01','SELECT','Admin information about user with ID: \'4\') has been selected.'),(112,'2009-08-15 00:28:20','INSERT','Team with name \'moep\' (with id: 160) has been inserted.'),(113,'2009-08-15 00:29:26','SELECT','Admin information about user with ID: \'2\') has been selected.'),(114,'2009-08-15 00:40:31','UPDATE','Game \'FAR CRY 2\' (with ID: \'7\') has been updated.'),(115,'2009-08-15 00:40:40','UPDATE','Guid \'name1\' (with ID: \'12\') has been updated.'),(116,'2009-08-15 00:40:54','INSERT','Map with name \'rotzmap\' (with id: 7) has been inserted.'),(117,'2009-08-15 00:41:15','UPDATE','Game \'testgame\' (with ID: \'28\') has been updated.'),(118,'2009-08-15 01:23:27','SELECT','Admin information about user with ID: \'4\') has been selected.'),(119,'2009-08-15 01:23:38','SELECT','Admin information about user with ID: \'4\') has been selected.'),(120,'2009-08-15 01:23:44','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(121,'2009-08-15 01:24:00','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(122,'2009-08-15 01:24:32','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(123,'2009-08-15 01:24:47','UPDATE','Team \'TEAM Thermaltake\' (with ID: \'23\') has been updated.'),(124,'2009-08-15 01:24:59','SELECT','Admin information about user with ID: \'2\') has been selected.'),(125,'2009-08-15 01:25:03','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(126,'2009-08-15 01:25:17','UPDATE','Team \'team61\' (with ID: \'105\') has been updated.'),(127,'2009-08-15 01:25:18','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(128,'2009-08-15 01:25:49','UPDATE','User Profile for user with ID: \'2\') has been updated.'),(129,'2009-08-15 01:26:04','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(130,'2009-08-15 01:26:14','UPDATE','User Profile for user with ID: \'4\') has been updated.'),(131,'2009-08-15 01:26:26','UPDATE','Team \'team62\' (with ID: \'106\') has been updated.'),(132,'2009-08-15 01:26:33','UPDATE','Team \'team62\' (with ID: \'106\') has been updated.'),(133,'2009-08-15 01:26:55','SELECT','Admin information about user with ID: \'4\') has been selected.'),(134,'2009-08-15 01:26:57','UPDATE','Team \'stargamerz\' (with ID: \'1\') has been updated.'),(135,'2009-08-15 01:27:13','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(136,'2009-08-15 01:27:25','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(137,'2009-08-15 01:30:47','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(138,'2009-08-15 01:30:54','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(139,'2009-08-15 01:31:17','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(140,'2009-08-15 01:31:47','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(141,'2009-08-15 01:32:06','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(142,'2009-08-15 01:32:13','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(143,'2009-08-15 01:35:09','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(144,'2009-08-15 01:35:36','SELECT','Admin information about user with ID: \'2\') has been selected.'),(145,'2009-08-15 01:35:42','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(146,'2009-08-15 01:37:18','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(147,'2009-08-15 01:37:28','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(148,'2009-08-15 01:39:36','UPDATE','Team \'stargamerztu\' (with ID: \'1\') has been updated.'),(149,'2009-08-15 02:35:38','INSERT','Team with name \'hdgfthrhntzn\' (with id: 161) has been inserted.'),(150,'2009-08-15 02:35:45','INSERT','Team with name \'rtttt\' (with id: 162) has been inserted.'),(151,'2009-08-15 02:47:51','UPDATE','User Profile for user with id: \'2\') has been updated.'),(152,'2009-08-15 02:47:56','UPDATE','Team \'stargamerztu\' (with id: \'1\') has been updated.'),(153,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'2\' in team with id \'1\' has been updated.'),(154,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'4\' in team with id \'1\' has been updated.'),(155,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'5\' in team with id \'1\' has been updated.'),(156,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'11\' in team with id \'1\' has been updated.'),(157,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'3\' in team with id \'1\' has been updated.'),(158,'2009-08-15 02:47:56','UPDATE','user-in-team status for user with id \'12\' in team with id \'1\' has been updated.'),(159,'2009-08-15 18:20:00','UPDATE','User Profile for user with id: \'2\') has been updated.'),(160,'2009-08-15 18:21:20','UPDATE','User Profile for user with id: \'2\') has been updated.'),(161,'2009-08-15 18:23:41','UPDATE','User Profile for user with id: \'2\') has been updated.'),(162,'2009-08-15 18:36:57','UPDATE','User Profile for user with id: \'2\') has been updated.'),(163,'2009-08-15 18:37:11','UPDATE','User Profile for user with id: \'2\') has been updated.'),(164,'2009-08-15 21:10:26','UPDATE','User Profile for user with id: \'2\') has been updated.'),(165,'2009-08-15 21:25:42','UPDATE','Team \'stargamerztu\' (with id: \'1\') has been updated.'),(166,'2009-08-15 21:25:42','UPDATE','user-in-team status for user with id \'2\' in team with id \'1\' has been updated.'),(167,'2009-08-15 21:25:42','UPDATE','user-in-team status for user with id \'4\' in team with id \'1\' has been updated.'),(168,'2009-08-15 21:25:42','UPDATE','user-in-team status for user with id \'5\' in team with id \'1\' has been updated.'),(169,'2009-08-15 21:25:43','UPDATE','user-in-team status for user with id \'11\' in team with id \'1\' has been updated.'),(170,'2009-08-15 21:25:43','UPDATE','user-in-team status for user with id \'3\' in team with id \'1\' has been updated.'),(171,'2009-08-15 21:25:43','UPDATE','user-in-team status for user with id \'12\' in team with id \'1\' has been updated.'),(172,'2009-08-15 21:59:54','INSERT','News with title: \'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\' has been added by user with id: \'2\''),(173,'2009-08-15 22:13:20','INSERT','News with title: \'my first real news\' has been added by user with id: \'2\'.'),(174,'2009-08-15 23:47:33','SELECT','Admin information about user with ID: \'2\') has been selected.'),(175,'2009-08-15 23:54:37','INSERT','News with title: \'abc\' has been edited.'),(176,'2009-08-15 23:55:06','INSERT','News with title: \'abc\' has been edited.'),(177,'2009-08-16 00:33:28','INSERT','News with title: \'abc\' has been edited.'),(178,'2009-08-16 00:41:34','INSERT','News with title: \'abc\' has been edited.'),(179,'2009-08-16 00:41:49','INSERT','News with title: \'abc\' has been edited.'),(180,'2009-08-16 19:05:22','INSERT','User with id \'9 is now admin.'),(181,'2009-08-16 19:05:33','INSERT','User with id \'3 is now head admin.'),(182,'2009-08-17 03:07:26','SELECT','Admin information about user with ID: \'2\') has been selected.'),(183,'2009-08-18 01:20:01','SELECT','Admin information about user with ID: \'2\') has been selected.'),(184,'2009-08-18 03:23:57','INSERT','PM with id \'8\' has been read'),(185,'2009-08-18 03:24:02','INSERT','PM with id \'9\' has been read'),(186,'2009-08-18 03:24:04','INSERT','PM with id \'8\' has been read'),(187,'2009-08-18 03:24:56','INSERT','User with id \'2\' wrote user with id \'3\' a pm.'),(188,'2009-08-18 03:25:26','SELECT','Admin information about user with ID: \'3\') has been selected.'),(189,'2009-08-18 03:25:37','INSERT','PM with id \'10\' has been read'),(190,'2009-08-18 03:25:46','INSERT','User with id \'3\' wrote user with id \'2\' a pm.'),(191,'2009-08-18 03:25:51','SELECT','Admin information about user with ID: \'2\') has been selected.'),(192,'2009-08-18 03:25:56','INSERT','PM with id \'11\' has been read');
 /*!40000 ALTER TABLE `logging` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -463,6 +463,38 @@ LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
 INSERT INTO `news` VALUES (1,'first news','hello world','2009-06-16 23:42:53',4),(2,'second news','hello world again','2009-06-16 23:43:57',4),(3,'third news','hello world again and again','2009-06-16 23:44:09',4),(7,'abc','[i]hjgjhg[/i]','2009-08-15 22:13:20',2);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pm`
+--
+
+DROP TABLE IF EXISTS `pm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pm` (
+  `pm_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `to` int(10) unsigned NOT NULL,
+  `from` int(10) unsigned NOT NULL,
+  `message` char(255) NOT NULL,
+  `date` datetime NOT NULL,
+  `read` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`pm_id`),
+  KEY `FK_pm_1` (`to`),
+  KEY `FK_pm_2` (`from`),
+  CONSTRAINT `FK_pm_1` FOREIGN KEY (`to`) REFERENCES `user` (`u_id`),
+  CONSTRAINT `FK_pm_2` FOREIGN KEY (`from`) REFERENCES `user` (`u_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pm`
+--
+
+LOCK TABLES `pm` WRITE;
+/*!40000 ALTER TABLE `pm` DISABLE KEYS */;
+INSERT INTO `pm` VALUES (2,3,2,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,','1000-00-00 00:00:00',1),(3,4,2,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,','0000-00-00 00:00:00',0),(4,5,2,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.','0000-00-00 00:00:00',0),(7,4,3,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.','0000-00-00 00:00:00',0),(8,2,3,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.','0000-00-00 00:00:00',1),(9,2,5,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.','0000-00-00 00:00:00',1),(10,3,2,'[b]hi[/b]','2009-08-18 03:24:56',1),(11,2,3,'[u]hi soi[/u]','2009-08-18 03:25:46',1);
+/*!40000 ALTER TABLE `pm` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -716,7 +748,7 @@ DELIMITER ;;
 BEGIN
   INSERT INTO admin (u_id, `date`) VALUES (user_id, NOW());
 
-  CALL `log`('INSERT', CONCAT('User with id \'', user_id, ' is now admin.'));
+  CALL `log`('INSERT', CONCAT('User with id \'', user_id, '\' is now admin.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -782,7 +814,7 @@ DELIMITER ;;
 BEGIN
   INSERT INTO head_admin (u_id, `date`) VALUES (user_id, NOW());
 
-  CALL `log`('INSERT', CONCAT('User with id \'', user_id, ' is now head admin.'));
+  CALL `log`('INSERT', CONCAT('User with id \'', user_id, '\' is now head admin.'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -966,6 +998,33 @@ BEGIN
     NOW());
 
   CALL `log`('INSERT', CONCAT('News with title: \'', news_title, '\' has been added by user with id: \'', user_id , '\'.'));
+
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `add_pm` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `add_pm`(IN to_id INTEGER UNSIGNED, IN from_id INTEGER UNSIGNED, In pm_message char(255))
+BEGIN
+  INSERT INTO pm (`to`, `from`, message, `date`, `read`) VALUES (
+    to_id,
+    from_id,
+    pm_message,
+    NOW(),
+    0);
+
+  CALL `log`('INSERT', CONCAT('User with id \'', from_id, '\' wrote user with id \'', to_id, '\' a pm.'));
 
 END */;;
 DELIMITER ;
@@ -1845,6 +1904,32 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_last_pm` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_last_pm`(IN to_id INTEGER UNSIGNED, IN from_id INTEGER UNSIGNED)
+BEGIN
+  SELECT pm.*, u.nick
+  FROM pm
+  JOIN `user` as u
+  WHERE `to` = to_id
+    AND `from` = from_id
+    AND pm.`to` = u.u_id
+  ORDER BY `date` DESC
+  LIMIT 0,1;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `get_league_id_from_match` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2329,6 +2414,83 @@ BEGIN
   WHERE l_id = league_id;
 
   SELECT player_count, min_count;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_pm_info` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_pm_info`(IN _pm_id INTEGER UNSIGNED)
+BEGIN
+  SELECT pm.*, u_1.nick as nick_receiver, u_2.nick as nick_sender
+  FROM pm
+  JOIN `user` as u_1
+  JOIN `user` as u_2
+    ON pm.`to` = u_1.u_id
+    AND pm.`from` = u_2.u_id
+  WHERE pm_id = _pm_id;
+
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_pm_received` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_pm_received`(IN user_id INTEGER UNSIGNED)
+BEGIN
+  SELECT pm.*, u.nick
+  FROM pm
+  JOIN `user` as u
+    ON pm.`from` = u.u_id
+  WHERE `to`= user_id
+  ORDER BY `date` DESC
+  LIMIT 0, 50;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_pm_send` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `get_pm_send`(IN user_id INTEGER UNSIGNED)
+BEGIN
+  SELECT pm.*, u.nick
+  FROM pm
+  JOIN `user`as u
+    ON pm.`to` = u.u_id
+  WHERE pm.`from` = user_id
+  ORDER BY pm.`date` DESC
+  LIMIT 0, 50;
+
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2997,14 +3159,40 @@ DELIMITER ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `test`()
 BEGIN
-  declare str char(100) default '1,2,3,4';
-  declare str_1 char(10) default '';
+set @rownum:=0;
 
-  set str_1 = split(str, ',', 1);
-  set str_1 = split(str, ',', 2);
-  set str_1 = split(str, ',', 3);
-  set str_1 = split(str, ',', 4);
-  select str;
+select `to`, `from`, message, `read`, `date` from(
+  select (@rownum := @rownum+1) as Rownumber, pm.*
+  from pm
+  order by pm_id desc
+) as t
+
+where
+ Rownumber > `offset` AND
+ Rownumber <= (`offset` + length);
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_pm` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`paul_dbo`@`%`*/ /*!50003 PROCEDURE `update_pm`(IN pm_id_ INTEGER UNSIGNED)
+BEGIN
+  UPDATE pm
+  SET `read`= 1
+  WHERE pm_id = pm_id_;
+
+  CALL `log`('INSERT', CONCAT('PM with id \'', pm_id_, '\' has been read'));
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3021,4 +3209,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2009-08-16 19:06:00
+-- Dump completed on 2009-08-18  3:26:49

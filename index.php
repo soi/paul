@@ -185,12 +185,17 @@
                                     'create_team',
                                     'join_league', 
                                     'logout',
-                                    'add_user_guid', 
+                                    'add_user_guid',
+                                    'add_pm',
+                                    'complete_add_pm',
                                     'complete_join_team', 
                                     'complete_create_team',
                                     'complete_join_league', 
                                     'complete_logout', 
-                                    'complete_add_user_guid');
+                                    'complete_add_user_guid',
+                                    'complete_delete_pm', 
+                                    'pm_overview', 
+                                    'pm');
             $perm_sites = array_merge($perm_sites, $area_login_all);
  
             // all member of one team            
@@ -308,7 +313,7 @@
     
     //main db connection
     $db = new mysql_connection('ripersoi.dyndns.org', 'paul_usr', 'YsvQz8SfV9', 'paul');
-    //$db_connection = connect_to_db('localhost', 'paul_dbo', 'BN6uMqvPyv', 'paul');
+    //$db = new mysql_connection('localhost', 'paul_usr', 'YsvQz8SfV9', 'paul');
     
     //main smarty instance        
     $smarty = new smarty_connect;         
@@ -356,6 +361,10 @@
                     
                 case 'add_news' :
                     $smarty->assign('content', $smarty->fetch("add_news.tpl"));
+                    break;
+                    
+                case 'add_pm' :
+                    display_add_pm();
                     break;
                 
                 case 'add_season' :
@@ -406,6 +415,10 @@
                     complete_add_news();
                     break;
                     
+                case 'complete_add_pm' :
+                    complete_add_pm();
+                    break;
+                    
                 case 'complete_add_season':
                     complete_add_season();
                     break;
@@ -420,6 +433,10 @@
                     
                 case 'complete_create_team':
                     complete_create_team();
+                    break;
+                    
+                case 'complete_delete_pm' :
+                    complete_delete_pm();
                     break;
                     
                 case 'complete_edit_game':
@@ -565,6 +582,14 @@
     
                 case 'news':
                     display_news();
+                    break;
+                    
+                case 'pm_overview' :
+                    display_pm_overview();
+                    break;
+                    
+                case 'pm' :
+                    display_pm();
                     break;
                     
                 case 'register':

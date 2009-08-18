@@ -19,3 +19,10 @@ GUID's:
 {foreach from=$user_guids item=one_guid }
     {$one_guid.name}: {$one_guid.guid} from {$one_guid.date}<br />
 {/foreach}
+
+<br />
+<br />
+
+{if $user_info.user_id != $visitor_info.user_id}
+    <a href="index.php?site=add_pm&to={$user_info.user_id}">Send pm</a>
+{/if}

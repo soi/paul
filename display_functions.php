@@ -76,6 +76,25 @@
      }
      
      /**
+     * Assignes: $pm_info
+     *
+     * @access public
+     * @return boolean true
+     */
+
+     function display_add_pm() {
+
+        global $smarty;
+        
+        if (valid_request(array(isset($_GET['to'])))) {
+            assign_last_pm_info($_GET['to']);
+            $smarty->assign('content', $smarty->fetch("add_pm.tpl"));
+        }
+        
+        return true;
+     }
+     
+     /**
      * Assignes: $teams_season
      *
      * @access public
@@ -536,6 +555,54 @@
         $smarty->assign('content', $smarty->fetch("news.tpl"));
         return true;
     }
+    
+    
+    /**
+     * Assignes: $pm_info
+     *
+     * @access public
+     * @return boolean true
+     */
+
+    function display_pm() {
+
+        global $smarty;
+
+        if (valid_request(array(isset($_GET['pm_id'])))) {
+            assign_pm_info($_GET['pm_id']);
+            
+            //update pm
+            global $db;
+            
+            $sql = "update_pm(".$_GET['pm_id'].")";
+            $db->run($sql);
+            if ($db->empty_result) {
+                display_errors(1);
+                return true;
+            }            
+            $smarty->assign('content', $smarty->fetch("pm.tpl"));
+        }
+        return true;
+    }
+    
+    /**
+     * Assignes: $pm_received, $pm_send
+     *
+     * @access public
+     * @return boolean true
+     */
+
+    function display_pm_overview() {
+
+        global $smarty;
+
+        assign_pm_received();
+        assign_pm_send();
+        $smarty->assign('content', $smarty->fetch("pm_overview.tpl"));
+        return true;
+    }
+    
+    
 
     /**
      * Display the registration form if the user isn't logged in

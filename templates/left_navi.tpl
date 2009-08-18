@@ -4,6 +4,8 @@
 
 <a href="index.php?site=user&user_id={$visitor_info.user_id}">my_profile</a> <br />
 <a href="index.php?site=edit_user_profile&user_id={$visitor_info.user_id}">edit_profile</a> <br /> <br />
+<a href="index.php?site=pm_overview">pm overview</a> <br />
+
 
 <a href="index.php?site=news">news</a> <br />
 <a href="index.php?site=add_news">add news</a> <br /> <br />

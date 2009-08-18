@@ -252,6 +252,40 @@
         
         return true;
     }
+    
+    
+    /**
+     * Assignes $last_pm_info - information about the last pm between 2 users if available
+     * @access public
+     * @return true
+    */
+
+    function assign_last_pm_info($to_id) {
+
+        global $smarty;
+        global $db;
+
+
+        $sql = "get_last_pm(".$to_id.", ".$_SESSION['user_id'].")";
+        $db->run($sql);
+        if ($pm = $db->get_result_row()) {
+            $pm['available'] = true;
+            $pm['message'] = parse_bb_code($pm['message']);
+        }
+        else {
+            $sql = "get_user_nick(".$to_id.")";
+            $db->run($sql);
+            if ($db->error_result) {
+                display_errors(1);
+                return true;
+            }
+            $nick = $db->get_result_row();
+            $pm = array('available' => false, 'to' => $to_id, 'nick' => $nick['nick']);
+        }
+
+        $smarty->assign('last_pm_info', $pm);
+        return true;
+    }
 
     
     /**
@@ -535,6 +569,87 @@
         $db->run($sql);
 
         $smarty->assign('news_info', $db->get_result_row());
+        return true;
+    }
+    
+    /**
+     * Assignes $pm_info - information about the last pm between 2 users if available
+     * @access public
+     * @return true
+    */
+
+    function assign_pm_info($pm_id) {
+
+        global $smarty;
+        global $db;
+        
+
+        $sql = "get_pm_info(".$pm_id.")";
+        $db->run($sql);
+        if ($db->empty_result) {
+            display_errors(1);
+            return true;            
+        } 
+        
+        $pm = $db->get_result_row(); 
+        if ($pm['to'] != $_SESSION['user_id'] && $pm['from'] != $_SESSION['user_id']) {
+            display_errors(900);
+            return true;
+        } 
+        $pm['message'] = parse_bb_code($pm['message']);               
+      
+        $smarty->assign('pm_info', $pm);
+        return true;
+    }
+    
+    
+    /**
+     * Assignes $pm_received  - list of all pm's received so far
+     * @access public
+     * @return true
+     */
+
+    function assign_pm_received() {
+
+        global $smarty;
+        global $db;
+
+
+        $sql = "get_pm_received(".$_SESSION['user_id'].")";
+        $db->run($sql);
+        $pms = $db->get_result_array();
+        
+        foreach ($pms as $key => $pm) {
+            $pms[$key]['message'] = parse_bb_code($pm['message']);
+        }
+        
+
+        $smarty->assign('pm_received', $pms);
+        return true;
+    }
+    
+    
+    /**
+     * Assignes $pm_send  - list of all pm's send so far
+     * @access public
+     * @return true
+     */
+
+    function assign_pm_send() {
+
+        global $smarty;
+        global $db;
+
+
+        $sql = "get_pm_send(".$_SESSION['user_id'].")";
+        $db->run($sql);
+        $pms = $db->get_result_array();
+
+        foreach ($pms as $key => $pm) {
+            $pms[$key]['message'] = parse_bb_code($pm['message']);
+        }
+
+        $smarty->assign('pm_send', $pms);
         return true;
     }
     
